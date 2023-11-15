@@ -9,6 +9,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UngDungHenHo.UserControls;
 
 namespace UngDungHenHo
 {
@@ -40,26 +41,33 @@ namespace UngDungHenHo
         private void btnHome_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
+            this.pnlBody.Controls.Clear();
+            SetSelected(sender);
         }
 
         private void btnChatting_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
+            this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCChatting());
         }
 
         private void btnFinding_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
+            this.pnlBody.Controls.Clear();
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
+            this.pnlBody.Controls.Clear();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
+            this.pnlBody.Controls.Clear();
         }
         private void ChangeStatehover(object sender, bool state, Color currColor)
         {
