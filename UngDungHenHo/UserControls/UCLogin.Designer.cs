@@ -104,6 +104,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
@@ -138,9 +139,10 @@
             this.lblSignIn.Font = new System.Drawing.Font("Segoe UI", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSignIn.Location = new System.Drawing.Point(902, 0);
             this.lblSignIn.Name = "lblSignIn";
-            this.lblSignIn.Size = new System.Drawing.Size(123, 46);
+            this.lblSignIn.Size = new System.Drawing.Size(118, 45);
             this.lblSignIn.TabIndex = 8;
             this.lblSignIn.Text = "SignIn";
+            this.lblSignIn.Click += new System.EventHandler(this.lblSignIn_Click);
             // 
             // UCLogin
             // 

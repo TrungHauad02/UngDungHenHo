@@ -15,6 +15,17 @@ namespace UngDungHenHo.UserControls
         public UCSignIn()
         {
             InitializeComponent();
+            this.lblSignIn.BackColor = Color.FromArgb(128, 255, 200, 221);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
