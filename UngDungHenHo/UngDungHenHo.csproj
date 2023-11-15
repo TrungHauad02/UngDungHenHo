@@ -71,6 +71,12 @@
     <Compile Include="UserControls\UCChatting.Designer.cs">
       <DependentUpon>UCChatting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCLogin.Designer.cs">
+      <DependentUpon>UCLogin.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCChatting.resx">
       <DependentUpon>UCChatting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCLogin.resx">
+      <DependentUpon>UCLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

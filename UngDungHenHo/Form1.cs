@@ -62,6 +62,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCLogin());
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
