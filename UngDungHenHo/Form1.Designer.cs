@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -39,7 +40,6 @@
             this.btnHome = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlMain.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -61,6 +61,14 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1015, 912);
             this.pnlMain.TabIndex = 0;
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 69);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(1015, 784);
+            this.pnlBody.TabIndex = 2;
             // 
             // pnlFooter
             // 
@@ -104,7 +112,7 @@
             this.btnProfile.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(184)))), ((int)(((byte)(184)))));
             this.btnProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnProfile.IconSize = 64;
-            this.btnProfile.Location = new System.Drawing.Point(821, 0);
+            this.btnProfile.Location = new System.Drawing.Point(668, 0);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(68, 64);
             this.btnProfile.TabIndex = 5;
@@ -123,7 +131,7 @@
             this.btnUser.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(184)))), ((int)(((byte)(184)))));
             this.btnUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUser.IconSize = 64;
-            this.btnUser.Location = new System.Drawing.Point(642, 0);
+            this.btnUser.Location = new System.Drawing.Point(855, 0);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(68, 64);
             this.btnUser.TabIndex = 4;
@@ -208,14 +216,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1015, 5);
             this.panel2.TabIndex = 1;
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 69);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1015, 784);
-            this.pnlBody.TabIndex = 2;
             // 
             // FormMain
             // 

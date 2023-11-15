@@ -18,8 +18,19 @@ namespace UngDungHenHo
         public FormMain()
         {
             InitializeComponent();
+            UCLogin ucLogin = new UCLogin();
+            ucLogin.SignInClicked += UCLogin_SignInClicked;
+            pnlBody.Controls.Add(ucLogin);
         }
+        private void UCLogin_SignInClicked(object sender, EventArgs e)
+        {
+            // Xử lý sự kiện khi lblSignIn được nhấp
+            pnlBody.Controls.Clear(); // Xóa các control hiện tại trong pnlBody
 
+            // Thêm UCSignIn vào pnlBody
+            UCSignIn ucSignIn = new UCSignIn();
+            pnlBody.Controls.Add(ucSignIn);
+        }
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
 
@@ -62,6 +73,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCLogin());
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
