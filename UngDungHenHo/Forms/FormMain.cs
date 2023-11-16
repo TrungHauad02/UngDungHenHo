@@ -10,40 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UngDungHenHo.BS_layer;
+using UngDungHenHo.Forms;
+using UngDungHenHo.models;
 using UngDungHenHo.UserControls;
 
 namespace UngDungHenHo
 {
     public partial class FormMain : Form
     {
-        private UCLogin ucLogin;
+        public static TaiKhoan account;
         public FormMain()
         {
             InitializeComponent();
-            ucLogin = new UCLogin();
-            ucLogin.SignInClicked += UCLogin_SignInClicked;
-            pnlBody.Controls.Add(ucLogin);
-        }
-        private void UCLogin_SignInClicked(object sender, EventArgs e)
-        {
-            // Xử lý sự kiện khi lblSignIn được nhấp
-            pnlBody.Controls.Clear(); // Xóa các control hiện tại trong pnlBody
-
-            // Thêm UCSignIn vào pnlBody
-            UCSignIn ucSignIn = new UCSignIn();
-            ucSignIn.ExitButtonClicked += UCSignIn_ExitButtonClicked;
-            pnlBody.Controls.Add(ucSignIn);
-        }
-        private void UCSignIn_ExitButtonClicked(object sender, EventArgs e)
-        {
-            pnlBody.Controls.Clear();
-            pnlBody.Controls.Add(ucLogin);
         }
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
        
         private void SetSelected(object sender)
         {
@@ -81,7 +64,10 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            this.pnlBody.Controls.Add(new UCLogin());
+            this.Visible = false;
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+            this.Visible = true;
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
