@@ -221,10 +221,11 @@
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(224)))), ((int)(((byte)(254)))));
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Font = new System.Drawing.Font("Wingdings", 30F);
             this.txtPassword.Location = new System.Drawing.Point(380, 703);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(340, 65);
+            this.txtPassword.PasswordChar = 'l';
+            this.txtPassword.Size = new System.Drawing.Size(340, 63);
             this.txtPassword.TabIndex = 16;
             // 
             // btnSignIn
