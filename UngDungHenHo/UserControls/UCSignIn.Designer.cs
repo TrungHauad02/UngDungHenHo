@@ -32,13 +32,13 @@
             this.lblSignIn = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblSex = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtFullname = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -48,6 +48,8 @@
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlSex = new System.Windows.Forms.Panel();
+            this.lblFullnameError = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlSex.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,65 +89,65 @@
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(64, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 62);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Fullname:";
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.lblName.ForeColor = System.Drawing.Color.Black;
+            this.lblName.Location = new System.Drawing.Point(64, 160);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(239, 62);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "Fullname:";
             // 
-            // label2
+            // lblSex
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(64, 245);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 62);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Sex:";
+            this.lblSex.AutoSize = true;
+            this.lblSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
+            this.lblSex.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.lblSex.ForeColor = System.Drawing.Color.Black;
+            this.lblSex.Location = new System.Drawing.Point(64, 245);
+            this.lblSex.Name = "lblSex";
+            this.lblSex.Size = new System.Drawing.Size(117, 62);
+            this.lblSex.TabIndex = 5;
+            this.lblSex.Text = "Sex:";
             // 
-            // label3
+            // lblDate
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(64, 331);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 62);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Date:";
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.lblDate.ForeColor = System.Drawing.Color.Black;
+            this.lblDate.Location = new System.Drawing.Point(64, 331);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(143, 62);
+            this.lblDate.TabIndex = 6;
+            this.lblDate.Text = "Date:";
             // 
-            // label4
+            // lblPhone
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(64, 424);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(179, 62);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Phone:";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.lblPhone.ForeColor = System.Drawing.Color.Black;
+            this.lblPhone.Location = new System.Drawing.Point(64, 424);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(179, 62);
+            this.lblPhone.TabIndex = 7;
+            this.lblPhone.Text = "Phone:";
             // 
-            // label5
+            // lblEmail
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(64, 517);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 62);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Email:";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.lblEmail.ForeColor = System.Drawing.Color.Black;
+            this.lblEmail.Location = new System.Drawing.Point(64, 517);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(159, 62);
+            this.lblEmail.TabIndex = 8;
+            this.lblEmail.Text = "Email:";
             // 
             // txtFullname
             // 
@@ -156,14 +158,14 @@
             this.txtFullname.Size = new System.Drawing.Size(401, 65);
             this.txtFullname.TabIndex = 9;
             // 
-            // dateTimePicker1
+            // dtpDate
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 15.5F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(319, 346);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(401, 42);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dtpDate.CalendarFont = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 15.5F);
+            this.dtpDate.Location = new System.Drawing.Point(319, 346);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(401, 42);
+            this.dtpDate.TabIndex = 10;
             // 
             // txtPhone
             // 
@@ -261,6 +263,30 @@
             this.pnlSex.Size = new System.Drawing.Size(397, 77);
             this.pnlSex.TabIndex = 19;
             // 
+            // lblFullnameError
+            // 
+            this.lblFullnameError.AutoSize = true;
+            this.lblFullnameError.BackColor = System.Drawing.Color.White;
+            this.lblFullnameError.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullnameError.ForeColor = System.Drawing.Color.Red;
+            this.lblFullnameError.Location = new System.Drawing.Point(319, 222);
+            this.lblFullnameError.Name = "lblFullnameError";
+            this.lblFullnameError.Size = new System.Drawing.Size(123, 23);
+            this.lblFullnameError.TabIndex = 20;
+            this.lblFullnameError.Text = "Error full name";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(319, 391);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 23);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Error date";
+            // 
             // UCSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,6 +294,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(224)))), ((int)(((byte)(254)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFullnameError);
             this.Controls.Add(this.pnlSex);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSignIn);
@@ -275,13 +303,13 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.txtFullname);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblSex);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblSignIn);
@@ -300,13 +328,13 @@
         private System.Windows.Forms.Label lblSignIn;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSex;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtFullname;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.RadioButton rdbMale;
         private System.Windows.Forms.TextBox txtEmail;
@@ -316,5 +344,7 @@
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlSex;
+        private System.Windows.Forms.Label lblFullnameError;
+        private System.Windows.Forms.Label label1;
     }
 }
