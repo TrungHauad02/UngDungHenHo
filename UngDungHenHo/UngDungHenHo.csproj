@@ -121,5 +121,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="codeSQL\create.sql" />
+    <Content Include="codeSQL\data.sql" />
+    <Content Include="codeSQL\function.sql" />
+    <Content Include="codeSQL\hinhanh1.jpg" />
+    <Content Include="codeSQL\procedure.sql" />
+    <Content Include="codeSQL\trigger.sql" />
+    <Content Include="codeSQL\view.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
