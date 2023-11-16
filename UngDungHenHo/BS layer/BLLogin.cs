@@ -22,7 +22,7 @@ namespace UngDungHenHo.BS_layer
             if(dt.Rows[0].ToString() != "-1")
             {
                 tk = new TaiKhoan();
-                tk.Id = dt.Rows[0].ToString();
+                tk.Id = dt.Rows[0][0].ToString();
             }
             return tk;
         }

@@ -12,20 +12,21 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCSignIn : UserControl
     {
+        public event EventHandler ExitButtonClicked;
         public UCSignIn()
         {
             InitializeComponent();
-            this.lblSignIn.BackColor = Color.FromArgb(128, 255, 200, 221);
+            //this.lblSignIn.BackColor = Color.FromArgb(128, 255, 200, 221);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            ExitButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

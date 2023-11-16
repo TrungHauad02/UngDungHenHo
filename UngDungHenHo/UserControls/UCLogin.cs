@@ -40,10 +40,10 @@ namespace UngDungHenHo.UserControls
         private void btnLogin_Click(object sender, EventArgs e)
         {
             account = new TaiKhoan();
-            account.Username = this.lblUsername.Text.Trim();
-            account.Password = this.lblPassword.Text.Trim();
+            account.Username = this.txtUsername.Text.Trim();
+            account.Password = this.txtPassword.Text.Trim();
             account = bLLogin.TryLogin(account);
-            if (account != null)
+            if (account.Id != "-1")
             {
                 MessageBox.Show($"Welcome {account.Id}", "Login succeed");
             }

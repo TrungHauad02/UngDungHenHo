@@ -9,16 +9,18 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UngDungHenHo.BS_layer;
 using UngDungHenHo.UserControls;
 
 namespace UngDungHenHo
 {
     public partial class FormMain : Form
     {
+        private UCLogin ucLogin;
         public FormMain()
         {
             InitializeComponent();
-            UCLogin ucLogin = new UCLogin();
+            ucLogin = new UCLogin();
             ucLogin.SignInClicked += UCLogin_SignInClicked;
             pnlBody.Controls.Add(ucLogin);
         }
@@ -29,7 +31,13 @@ namespace UngDungHenHo
 
             // Thêm UCSignIn vào pnlBody
             UCSignIn ucSignIn = new UCSignIn();
+            ucSignIn.ExitButtonClicked += UCSignIn_ExitButtonClicked;
             pnlBody.Controls.Add(ucSignIn);
+        }
+        private void UCSignIn_ExitButtonClicked(object sender, EventArgs e)
+        {
+            pnlBody.Controls.Clear();
+            pnlBody.Controls.Add(ucLogin);
         }
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
