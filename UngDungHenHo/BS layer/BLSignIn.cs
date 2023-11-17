@@ -20,7 +20,7 @@ namespace UngDungHenHo.BS_layer
             TaiKhoan acc = new TaiKhoan();
             string query = $"EXEC dbo.SignIn @HoTen = {nguoiDung.Name}, @GioiTinh = {nguoiDung.Sex}, @NgaySinh = {nguoiDung.Date}," +
                 $"@SDT = {nguoiDung.Phone}, @Email = {nguoiDung.Email}, @TaiKhoan = {nguoiDung.Username}, @MatKhau = {nguoiDung.Password}," +
-                $"@PhanQuyen = {nguoiDung.Role}";
+                $"@PhanQuyen = {nguoiDung.Role};";
             string error = String.Empty;
             dbMain.MyExecuteNonQuery(query, System.Data.CommandType.Text, ref error); ;
             if(error != "")
@@ -28,7 +28,9 @@ namespace UngDungHenHo.BS_layer
                 MessageBox.Show(error, "ERROR",MessageBoxButton.OK,MessageBoxImage.Error);
                 return null;
             }
-            MessageBox.Show("SignIn succeed. Welcome", "");
+            MessageBox.Show("SignIn succeed. Welcome", "Congratulation");
+            acc.Username = nguoiDung.Username;
+            acc.Id = nguoiDung.Role;
             return acc;
         }
     }
