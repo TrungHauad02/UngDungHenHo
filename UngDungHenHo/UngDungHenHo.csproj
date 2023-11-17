@@ -55,12 +55,25 @@
   <ItemGroup>
     <Compile Include="BS layer\BLChatting.cs" />
     <Compile Include="BS layer\BLLogin.cs" />
+    <Compile Include="BS layer\BLSignIn.cs" />
     <Compile Include="DB layer\DBMain.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSignIn.Designer.cs">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
     </Compile>
     <Compile Include="models\NguoiDung.cs" />
     <Compile Include="models\TaiKhoan.cs" />
@@ -73,20 +86,14 @@
     <Compile Include="UserControls\UCChatting.Designer.cs">
       <DependentUpon>UCChatting.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCLogin.Designer.cs">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCSignIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCSignIn.Designer.cs">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSignIn.resx">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,12 +106,6 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCChatting.resx">
       <DependentUpon>UCChatting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCLogin.resx">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCSignIn.resx">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
