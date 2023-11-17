@@ -1,31 +1,17 @@
 
-CREATE TRIGGER TRG_UpdateSLThich
-ON THICHBAIVIET
-AFTER INSERT, UPDATE, DELETE
+CREATE TRIGGER KiemTraGhepDoi
+ON THICHNGUOIDUNG
+AFTER INSERT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    DECLARE @ID_NguoiThich INT, @ID_NguoiDuocThich INT;
 
-    -- Cập nhật SLThich khi có bản ghi được thêm hoặc cập nhật trong THICHBAIVIET
-    UPDATE BAIVIET
-    SET SLThich = (
-        SELECT COUNT(ID_BaiViet)
-        FROM THICHBAIVIET
-        WHERE THICHBAIVIET.ID_BaiViet = BAIVIET.ID_BaiViet
-    )
-    FROM BAIVIET
-    INNER JOIN INSERTED ON BAIVIET.ID_BaiViet = INSERTED.ID_BaiViet
+    SELECT @ID_NguoiThich = ID_NguoiThich, @ID_NguoiDuocThich = ID_NguoiDuocThich FROM inserted;
 
-    -- Cập nhật SLThich khi có bản ghi bị xóa trong THICHBAIVIET
-    UPDATE BAIVIET
-    SET SLThich = SLThich - 1
-    FROM BAIVIET
-    INNER JOIN DELETED ON BAIVIET.ID_BaiViet = DELETED.ID_BaiViet
-
-    -- Cập nhật SLThich khi có bản ghi được thêm vào THICHBAIVIET
-    UPDATE BAIVIET
-    SET SLThich = SLThich + 1
-    FROM BAIVIET
-    INNER JOIN INSERTED ON BAIVIET.ID_BaiViet = INSERTED.ID_BaiViet
-END
+    IF EXISTS (SELECT 1 FROM THICHNGUOIDUNG WHERE ID_NguoiThich = @ID_NguoiDuocThich AND ID_NguoiDuocThich = @ID_NguoiThich)
+    BEGIN
+        INSERT INTO GHEPDOI (ID_NguoiDung1, ID_NguoiDung2)
+        VALUES (@ID_NguoiThich, @ID_NguoiDuocThich);
+    END
+END;
 GO
