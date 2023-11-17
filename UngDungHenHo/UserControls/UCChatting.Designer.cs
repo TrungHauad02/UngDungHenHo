@@ -36,12 +36,19 @@
             this.pnlChatHeader = new System.Windows.Forms.Panel();
             this.lblTenNguoiChat = new System.Windows.Forms.Label();
             this.pbAnhNguoiChat = new System.Windows.Forms.PictureBox();
+            this.pnlNguoiDung = new System.Windows.Forms.Panel();
             this.pnlNguoiDungs = new System.Windows.Forms.Panel();
+            this.pnlHeaderNguoiDung = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.pnlNoiDungChat.SuspendLayout();
             this.pnlChatEnter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendMessages)).BeginInit();
             this.pnlChatHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAnhNguoiChat)).BeginInit();
+            this.pnlNguoiDung.SuspendLayout();
+            this.pnlHeaderNguoiDung.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNoiDungChat
@@ -90,6 +97,7 @@
             this.btnSendMessages.Size = new System.Drawing.Size(49, 43);
             this.btnSendMessages.TabIndex = 1;
             this.btnSendMessages.TabStop = false;
+            this.btnSendMessages.Click += new System.EventHandler(this.btnSendMessages_Click);
             // 
             // rtxtEnterContentChat
             // 
@@ -130,22 +138,67 @@
             this.pbAnhNguoiChat.TabIndex = 0;
             this.pbAnhNguoiChat.TabStop = false;
             // 
+            // pnlNguoiDung
+            // 
+            this.pnlNguoiDung.AutoScroll = true;
+            this.pnlNguoiDung.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.pnlNguoiDung.Controls.Add(this.pnlNguoiDungs);
+            this.pnlNguoiDung.Controls.Add(this.pnlHeaderNguoiDung);
+            this.pnlNguoiDung.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlNguoiDung.Location = new System.Drawing.Point(0, 0);
+            this.pnlNguoiDung.Name = "pnlNguoiDung";
+            this.pnlNguoiDung.Size = new System.Drawing.Size(268, 784);
+            this.pnlNguoiDung.TabIndex = 0;
+            // 
             // pnlNguoiDungs
             // 
-            this.pnlNguoiDungs.AutoScroll = true;
-            this.pnlNguoiDungs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.pnlNguoiDungs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNguoiDungs.Location = new System.Drawing.Point(0, 0);
+            this.pnlNguoiDungs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlNguoiDungs.Location = new System.Drawing.Point(0, 100);
             this.pnlNguoiDungs.Name = "pnlNguoiDungs";
-            this.pnlNguoiDungs.Size = new System.Drawing.Size(268, 784);
-            this.pnlNguoiDungs.TabIndex = 0;
+            this.pnlNguoiDungs.Size = new System.Drawing.Size(268, 684);
+            this.pnlNguoiDungs.TabIndex = 1;
+            // 
+            // pnlHeaderNguoiDung
+            // 
+            this.pnlHeaderNguoiDung.Controls.Add(this.iconPictureBox1);
+            this.pnlHeaderNguoiDung.Controls.Add(this.label1);
+            this.pnlHeaderNguoiDung.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeaderNguoiDung.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeaderNguoiDung.Name = "pnlHeaderNguoiDung";
+            this.pnlHeaderNguoiDung.Size = new System.Drawing.Size(268, 100);
+            this.pnlHeaderNguoiDung.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Extra Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.label1.Location = new System.Drawing.Point(123, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 33);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Chat";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.FacebookMessenger;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 65;
+            this.iconPictureBox1.Location = new System.Drawing.Point(31, 22);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(67, 65);
+            this.iconPictureBox1.TabIndex = 1;
+            this.iconPictureBox1.TabStop = false;
             // 
             // UCChatting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlNoiDungChat);
-            this.Controls.Add(this.pnlNguoiDungs);
+            this.Controls.Add(this.pnlNguoiDung);
             this.Name = "UCChatting";
             this.Size = new System.Drawing.Size(1015, 784);
             this.pnlNoiDungChat.ResumeLayout(false);
@@ -154,6 +207,10 @@
             this.pnlChatHeader.ResumeLayout(false);
             this.pnlChatHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAnhNguoiChat)).EndInit();
+            this.pnlNguoiDung.ResumeLayout(false);
+            this.pnlHeaderNguoiDung.ResumeLayout(false);
+            this.pnlHeaderNguoiDung.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,6 +224,10 @@
         private System.Windows.Forms.Panel pnlChatContent;
         private System.Windows.Forms.Label lblTenNguoiChat;
         private System.Windows.Forms.PictureBox pbAnhNguoiChat;
+        private System.Windows.Forms.Panel pnlNguoiDung;
         private System.Windows.Forms.Panel pnlNguoiDungs;
+        private System.Windows.Forms.Panel pnlHeaderNguoiDung;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

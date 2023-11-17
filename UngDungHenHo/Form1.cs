@@ -20,9 +20,9 @@ namespace UngDungHenHo
         public FormMain()
         {
             InitializeComponent();
-            ucLogin = new UCLogin();
+           /* ucLogin = new UCLogin();
             ucLogin.SignInClicked += UCLogin_SignInClicked;
-            pnlBody.Controls.Add(ucLogin);
+            pnlBody.Controls.Add(ucLogin);*/
         }
         private void UCLogin_SignInClicked(object sender, EventArgs e)
         {
