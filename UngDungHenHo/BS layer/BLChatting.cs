@@ -30,5 +30,12 @@ namespace UngDungHenHo.BS_layer
             string query = "select * from NGUOIDUNG";
             return db.ExecuteQueryDataSet(query, CommandType.Text).Tables[0];
         }
+        public bool ThemTinNhan(int id_gui, int id_nhan,DateTime time, string noidung, ref string err)
+        {
+
+            string query = $"INSERT INTO TINNHAN VALUES ('{noidung}', NULL, '{time.ToString("yyyy-MM-dd HH:mm:ss")}',1,{id_gui},{id_nhan})";
+            return db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+
+        }
     }
 }
