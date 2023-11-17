@@ -61,7 +61,10 @@ namespace UngDungHenHo.UserControls
             for (int i = 0; i < tongnguoidung; i++)
             {
                 panels[i] = new Panel();
-                panels[i].BackColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+                if (i == 10)
+                    panels[i].BackColor = Color.Red;
+                else
+                    panels[i].BackColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
                 panels[i].Width = pnlListNguoiDungs.Width-200;
                 panels[i].Height = pnlListNguoiDungs.Height-200;
                 panels[i].Tag = i;
@@ -109,9 +112,10 @@ namespace UngDungHenHo.UserControls
 
                 if (panels[tag].Location != newLocation)
                 {
+                   zz
                     panels[tag].Location = newLocation;
 
-                    ResetPanels();
+                  
                 }
             }
         }
