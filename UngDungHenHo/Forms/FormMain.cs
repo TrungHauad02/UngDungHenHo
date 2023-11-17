@@ -46,9 +46,8 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            SetSelected(sender);
+            this.pnlBody.Controls.Add(new UCHome());
         }
-
         private void btnChatting_Click(object sender, EventArgs e)
         {
             SetSelected(sender);
