@@ -285,7 +285,7 @@
             this.lblSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(221)))));
             this.lblSignIn.Font = new System.Drawing.Font("Segoe UI", 45F, System.Drawing.FontStyle.Bold);
             this.lblSignIn.ForeColor = System.Drawing.Color.Black;
-            this.lblSignIn.Location = new System.Drawing.Point(39, -1);
+            this.lblSignIn.Location = new System.Drawing.Point(39, 3);
             this.lblSignIn.Name = "lblSignIn";
             this.lblSignIn.Size = new System.Drawing.Size(303, 100);
             this.lblSignIn.TabIndex = 22;

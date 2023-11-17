@@ -16,9 +16,11 @@ namespace UngDungHenHo.Forms
     public partial class FormSignIn : Form
     {
         private BLSignIn signIn;
+        private TaiKhoan account { get; set; }
         public FormSignIn()
         {
             InitializeComponent();
+            this.RemoveErrorMsg();
             signIn = new BLSignIn();
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -28,6 +30,7 @@ namespace UngDungHenHo.Forms
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
+            this.RemoveErrorMsg();
             if (!this.CheckFill())
                 return;
             NguoiDung nguoiDung = new NguoiDung();
@@ -37,7 +40,8 @@ namespace UngDungHenHo.Forms
             nguoiDung.Email = this.txtEmail.Text;
             nguoiDung.Username = this.txtUsername.Text;
             nguoiDung.Password = this.txtPassword.Text;
-            signIn.TrySignIn(nguoiDung);
+            nguoiDung.Role = "user";
+            account = signIn.TrySignIn(nguoiDung);
         }
 
         private bool CheckFill()
@@ -82,5 +86,17 @@ namespace UngDungHenHo.Forms
             return result;
         }
         
+        private void RemoveErrorMsg()
+        {
+            this.lblErrorFullname.Text = "";
+            this.lblErrorDate.Text = "";
+            this.lblErrorPhone.Text = "";
+            this.lblErrorPhone.Text = "";
+            this.lblErrorPhone.Text = "";
+            this.lblErrorEmail.Text = "";
+            this.lblErrorUsername.Text = "";
+            this.lblErrorPassword.Text = "";
+        }
+
     }
 }

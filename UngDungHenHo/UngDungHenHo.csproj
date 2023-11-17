@@ -69,6 +69,12 @@
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSignIn.Designer.cs">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\NguoiDung.cs" />
     <Compile Include="models\TaiKhoan.cs" />
     <Compile Include="models\TinNhan.cs" />
@@ -80,23 +86,14 @@
     <Compile Include="UserControls\UCChatting.Designer.cs">
       <DependentUpon>UCChatting.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCLogin.Designer.cs">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCSignIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCSignIn.Designer.cs">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSignIn.resx">
+      <DependentUpon>FormSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,12 +106,6 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCChatting.resx">
       <DependentUpon>UCChatting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCLogin.resx">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCSignIn.resx">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
