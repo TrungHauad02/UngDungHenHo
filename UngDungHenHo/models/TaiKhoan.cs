@@ -10,7 +10,7 @@ namespace UngDungHenHo.models
     {
         private string username;
         private string password;
-        private string id;
+        private int id;
         public TaiKhoan(string username,string password) 
         {
             this.username = username;
@@ -20,6 +20,6 @@ namespace UngDungHenHo.models
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public string Id { get => id; set => id = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

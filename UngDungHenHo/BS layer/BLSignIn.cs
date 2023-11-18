@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,19 +20,36 @@ namespace UngDungHenHo.BS_layer
         public TaiKhoan TrySignIn(NguoiDung nguoiDung)
         {
             TaiKhoan acc = new TaiKhoan();
-            string query = $"EXEC dbo.SignIn @HoTen = {nguoiDung.Name}, @GioiTinh = {nguoiDung.Sex}, @NgaySinh = {nguoiDung.Date}," +
-                $"@SDT = {nguoiDung.Phone}, @Email = {nguoiDung.Email}, @TaiKhoan = {nguoiDung.Username}, @MatKhau = {nguoiDung.Password}," +
-                $"@PhanQuyen = {nguoiDung.Role};";
             string error = String.Empty;
-            dbMain.MyExecuteNonQuery(query, System.Data.CommandType.Text, ref error); ;
-            if(error != "")
+            string procName = "dbo.TrySignIn";
+            SqlConnection conn = dbMain.OpenConnect();
+            dbMain.Comm = new SqlCommand(procName, conn);
+            dbMain.Comm.CommandType = CommandType.StoredProcedure;
+            dbMain.Comm.Parameters.Add(new SqlParameter("@HoTen", nguoiDung.Name));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@GioiTinh", nguoiDung.Sex));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@NgaySinh", nguoiDung.Date));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@SDT", nguoiDung.Phone));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@Email", nguoiDung.Email));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@TaiKhoan", nguoiDung.Username));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@MatKhau", nguoiDung.Password));
+            dbMain.Comm.Parameters.Add(new SqlParameter("@PhanQuyen", nguoiDung.Role));
+            SqlParameter returnParameter = dbMain.Comm.Parameters.Add("@ID_DangNhap", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.Output;
+            try
             {
-                MessageBox.Show(error, "ERROR",MessageBoxButton.OK,MessageBoxImage.Error);
+                dbMain.Comm.ExecuteNonQuery();
+            }catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            if(error != "")
+            {               
                 return null;
             }
-            MessageBox.Show("SignIn succeed. Welcome", "Congratulation");
+            nguoiDung.Id = (int)returnParameter.Value;
             acc.Username = nguoiDung.Username;
-            acc.Id = nguoiDung.Role;
+            acc.Password = nguoiDung.Password;
+            acc.Id = nguoiDung.Id;
             return acc;
         }
     }

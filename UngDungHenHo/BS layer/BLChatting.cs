@@ -18,17 +18,20 @@ namespace UngDungHenHo.BS_layer
         public int LayMaTinNhanMax()
         {
             string query = "select dbo.GetMaxID_TinNhan()";
-            return int.Parse(db.ExecuteQueryDataSet(query, CommandType.Text).Tables[0].Rows[0][0].ToString());
+            string error = String.Empty;
+            return int.Parse(db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0].Rows[0][0].ToString());
         }
         public DataTable LayNoiDungTinNhan(int id_gui, int id_nhan)
         {
             string query = $"execute prc_laynoidungtinnhan {id_gui},{id_nhan}";
-            return db.ExecuteQueryDataSet(query,CommandType.Text).Tables[0];
+            string error = String.Empty;
+            return db.ExecuteQueryDataSet(query,CommandType.Text, ref error).Tables[0];
         }
         public DataTable LoadNguoiDung()
         {
             string query = "select * from NGUOIDUNG";
-            return db.ExecuteQueryDataSet(query, CommandType.Text).Tables[0];
+            string error = String.Empty;
+            return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
         }
     }
 }

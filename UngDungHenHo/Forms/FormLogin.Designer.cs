@@ -52,6 +52,7 @@
             this.lblSignIn.Size = new System.Drawing.Size(118, 45);
             this.lblSignIn.TabIndex = 17;
             this.lblSignIn.Text = "SignIn";
+            this.lblSignIn.Click += new System.EventHandler(this.lblSignIn_Click);
             // 
             // lblForgetPass
             // 
