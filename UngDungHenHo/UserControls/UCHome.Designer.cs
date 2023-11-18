@@ -30,18 +30,20 @@
         {
             this.pnlListNguoiDungs = new System.Windows.Forms.Panel();
             this.pnltong = new System.Windows.Forms.Panel();
+            this.pnlListNguoiDungs.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlListNguoiDungs
             // 
-            this.pnlListNguoiDungs.Location = new System.Drawing.Point(3, 0);
+            this.pnlListNguoiDungs.Controls.Add(this.pnltong);
+            this.pnlListNguoiDungs.Location = new System.Drawing.Point(3, 3);
             this.pnlListNguoiDungs.Name = "pnlListNguoiDungs";
-            this.pnlListNguoiDungs.Size = new System.Drawing.Size(919, 508);
+            this.pnlListNguoiDungs.Size = new System.Drawing.Size(873, 502);
             this.pnlListNguoiDungs.TabIndex = 0;
             // 
             // pnltong
             // 
-            this.pnltong.Location = new System.Drawing.Point(318, 63);
+            this.pnltong.Location = new System.Drawing.Point(396, 402);
             this.pnltong.Name = "pnltong";
             this.pnltong.Size = new System.Drawing.Size(114, 100);
             this.pnltong.TabIndex = 1;
@@ -51,11 +53,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnltong);
             this.Controls.Add(this.pnlListNguoiDungs);
             this.Name = "UCHome";
             this.Size = new System.Drawing.Size(925, 508);
             this.Load += new System.EventHandler(this.UCHome_Load);
+            this.pnlListNguoiDungs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

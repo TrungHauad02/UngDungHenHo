@@ -31,3 +31,26 @@ BEGIN
     RETURN -1;
 END
 GO
+
+
+
+CREATE FUNCTION [dbo].[func_LayDanhSachBaiVietNguoiDung]
+(
+    @IdNguoiDung INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT *
+    FROM BaiViet
+    WHERE ID_NguoiDung = @IdNguoiDung
+);
+
+
+
+
+
+
+
+
