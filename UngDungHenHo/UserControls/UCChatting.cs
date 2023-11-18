@@ -16,7 +16,7 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCChatting : UserControl
     {
-        int idDangNhap = 2;
+        int idDangNhap = 1;
         BLChatting blchat = new BLChatting();
         List<NguoiDung> listNguoiDungs = new List<NguoiDung>();
         private int idNguoiDungSelected = 0;
@@ -24,7 +24,7 @@ namespace UngDungHenHo.UserControls
         public UCChatting()
         {
             InitializeComponent();
-            AddScrollBar(this.pnlNguoiDungs);
+            AddScrollBar(this.pnlNguoiDung);
             AddScrollBar(this.pnlChatContent);
            
             LoadNguoiDung();
@@ -90,7 +90,7 @@ namespace UngDungHenHo.UserControls
                 this.idNguoiDungSelected = int.Parse((sender as Panel).Tag.ToString());
             }
             this.pnlChatContent.Controls.Clear();
-            this.lblTenNguoiChat.Text = this.listNguoiDungs[ this.idNguoiDungSelected].Name.ToString();
+            this.lblTenNguoiChat.Text = this.listNguoiDungs[ this.idNguoiDungSelected].Name.ToString()+ this.idNguoiDungSelected.ToString();
 
             loadDoanChat(idDangNhap, this.idNguoiDungSelected+1);
         }
@@ -122,14 +122,15 @@ namespace UngDungHenHo.UserControls
                     indexvitri++;
                 }
                 listNguoiDungs.Add(nd);
-               
                 index++;
             }
             dt.Dispose();
         }
         public void loadDoanChat(int id_gui, int id_nhan)
         {
+
             this.listtinnhans.Clear();
+            this.pnlChatContent.Controls.Clear();
             DataTable tingui = blchat.LayNoiDungTinNhan(id_gui, id_nhan);
             DataTable tinnhan = blchat.LayNoiDungTinNhan(id_nhan, id_gui);
             DataTable doanchat = new DataTable();
@@ -164,6 +165,28 @@ namespace UngDungHenHo.UserControls
             tinnhan.Dispose();
             doanchat.Dispose();
             res.Dispose();
+        }
+        private void btnSendMessages_Click(object sender, EventArgs e)
+        {
+            string noidung = this.rtxtEnterContentChat.Text;
+            string err = "";
+            if(noidung.Trim() != "")
+            {
+                bool state = blchat.ThemTinNhan(idDangNhap, idNguoiDungSelected+1, DateTime.Now, noidung, ref err);
+                if(state == true)
+                {
+                    this.rtxtEnterContentChat.ResetText();
+                    loadDoanChat(idDangNhap, this.idNguoiDungSelected + 1);
+                }
+                else
+                {
+                    MessageBox.Show("Loi", "loi");
+                }
+            }
+            else
+            {
+                return;
+            }
         }
         public void AddScrollBar(Panel pnl)
         {
@@ -222,5 +245,7 @@ namespace UngDungHenHo.UserControls
             }
             par.BackColor = BackColor;
         }
+
+       
     }
 }
