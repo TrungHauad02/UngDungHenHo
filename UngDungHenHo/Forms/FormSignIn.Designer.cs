@@ -100,7 +100,6 @@
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(127, 42);
             this.rdbFemale.TabIndex = 14;
-            this.rdbFemale.TabStop = true;
             this.rdbFemale.Text = "Female";
             this.rdbFemale.UseVisualStyleBackColor = false;
             // 
@@ -108,6 +107,7 @@
             // 
             this.rdbMale.AutoSize = true;
             this.rdbMale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(224)))), ((int)(((byte)(254)))));
+            this.rdbMale.Checked = true;
             this.rdbMale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMale.Location = new System.Drawing.Point(12, 17);
             this.rdbMale.Name = "rdbMale";
