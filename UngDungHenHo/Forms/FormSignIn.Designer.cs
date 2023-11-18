@@ -291,14 +291,14 @@
             this.lblSignIn.TabIndex = 22;
             this.lblSignIn.Text = "SIGNIN";
             // 
-            // lblErrorPhone
+            // lblErrorMail
             // 
             this.lblErrorPhone.AutoSize = true;
             this.lblErrorPhone.BackColor = System.Drawing.Color.White;
             this.lblErrorPhone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorPhone.ForeColor = System.Drawing.Color.Red;
             this.lblErrorPhone.Location = new System.Drawing.Point(300, 461);
-            this.lblErrorPhone.Name = "lblErrorPhone";
+            this.lblErrorPhone.Name = "lblErrorMail";
             this.lblErrorPhone.Size = new System.Drawing.Size(101, 23);
             this.lblErrorPhone.TabIndex = 41;
             this.lblErrorPhone.Text = "Error Phone";
