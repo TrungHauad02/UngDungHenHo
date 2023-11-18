@@ -68,6 +68,7 @@
             this.lblForgetPass.TabIndex = 16;
             this.lblForgetPass.TabStop = true;
             this.lblForgetPass.Text = "Forget Password?";
+            this.lblForgetPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblForgetPass_LinkClicked);
             // 
             // btnExit
             // 
@@ -147,14 +148,14 @@
             this.lblLogin.TabIndex = 9;
             this.lblLogin.Text = "LOGIN";
             // 
-            // lblUsernameError
+            // lblErrorUsername
             // 
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.BackColor = System.Drawing.Color.White;
             this.lblUsernameError.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
             this.lblUsernameError.Location = new System.Drawing.Point(290, 474);
-            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Name = "lblErrorUsername";
             this.lblUsernameError.Size = new System.Drawing.Size(186, 35);
             this.lblUsernameError.TabIndex = 21;
             this.lblUsernameError.Text = "Error username";

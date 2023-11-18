@@ -89,5 +89,13 @@ namespace UngDungHenHo.Forms
                 this.Visible = true;
             }
         }
+
+        private void lblForgetPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormForgetpassword formForgetpass = new FormForgetpassword();
+            this.Visible = false;
+            formForgetpass.ShowDialog();
+            this.Visible = true;
+        }
     }
 }
