@@ -18,11 +18,12 @@ namespace UngDungHenHo.BS_layer
         {
             TaiKhoan tk = null;
             string query = $"SELECT dbo.ValidateLogin('{acc.Username}', '{acc.Password}')";
-            DataTable dt = dbMain.ExecuteQueryDataSet(query, CommandType.Text).Tables[0];
+            string error = String.Empty;
+            DataTable dt = dbMain.ExecuteQueryDataSet(query, CommandType.Text,ref error).Tables[0];
             if(dt.Rows[0].ToString() != "-1")
             {
                 tk = new TaiKhoan();
-                tk.Id = dt.Rows[0][0].ToString();
+                tk.Id = Int32.Parse(dt.Rows[0][0].ToString());
             }
             return tk;
         }

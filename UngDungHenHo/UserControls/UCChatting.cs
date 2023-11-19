@@ -24,7 +24,7 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCChatting : UserControl
     {
-        int idDangNhap = 2;
+        int idDangNhap = 1;
         BLChatting blchat = new BLChatting();
         List<NguoiDung> listNguoiDungs = new List<NguoiDung>();
         private int idNguoiDungSelected = 0;

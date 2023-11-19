@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,7 +41,7 @@ namespace UngDungHenHo.Forms
             account.Username = this.txtUsername.Text.Trim();
             account.Password = this.txtPassword.Text.Trim();
             FormMain.account = bLLogin.TryLogin(account);
-            if (FormMain.account.Id != "-1")
+            if (FormMain.account.Id != -1)
             {
                 MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
                 this.Close();
@@ -73,6 +74,28 @@ namespace UngDungHenHo.Forms
         {
             this.lblUsernameError.Text = "";
             this.lblPasswordError.Text = "";
+        }
+
+        private void lblSignIn_Click(object sender, EventArgs e)
+        {
+            using (FormSignIn formSignIn = new FormSignIn())
+            {
+                this.Visible = false;
+                if (formSignIn.ShowDialog() == DialogResult.OK)
+                {
+                    this.txtUsername.Text = formSignIn.Account.Username;
+                    this.txtPassword.Text = formSignIn.Account.Password;
+                }
+                this.Visible = true;
+            }
+        }
+
+        private void lblForgetPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormForgetpassword formForgetpass = new FormForgetpassword();
+            this.Visible = false;
+            formForgetpass.ShowDialog();
+            this.Visible = true;
         }
     }
 }
