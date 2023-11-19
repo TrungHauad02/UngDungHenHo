@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 use NHANTINHENHO
 GO
-=======
 
->>>>>>> 9c44d23f80541fd3f5687e3e6bdea9861da06c90
 CREATE PROCEDURE dbo.SignIn
     @HoTen NVARCHAR(50),
     @GioiTinh INT,
@@ -49,7 +46,14 @@ BEGIN
 END;
 GO
 
---------L?y n?i dung tin nh?n--------
-create proc prc_laynoidungtinnhan @id_gui int, @id_nhan int  
-as   
- select * from TINNHAN where ID_NguoiGui = @id_gui and ID_NguoiNhan = @id_nhan
+create PROCEDURE [dbo].[ThemThichNguoiDung]
+    @IdNguoithich INT,
+    @IdNguoiDuocthich INT
+AS
+BEGIN
+    INSERT INTO THICHNGUOIDUNG (ID_NguoiThich, ID_NguoiDuocThich)
+    VALUES (@IdNguoithich, @IdNguoiDuocthich);
+END;
+
+
+

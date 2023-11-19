@@ -35,5 +35,16 @@ namespace UngDungHenHo.BS_layer
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public void ThemNguoiDungThich(int IdNguoithich, int IdNguoiDuocthich)
+        {
+
+            SqlCommand cmd = new SqlCommand("dbo.ThemThichNguoiDung", db.OpenConnect());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@IdNguoithich", IdNguoithich);
+            cmd.Parameters.AddWithValue("@IdNguoiDuocthich", IdNguoiDuocthich);
+            cmd.ExecuteNonQuery();
+
+        }
     }
 }
