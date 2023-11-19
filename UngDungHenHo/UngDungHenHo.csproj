@@ -74,6 +74,9 @@
     <Compile Include="BS layer\BLHome.cs" />
     <Compile Include="BS layer\BLLogin.cs" />
     <Compile Include="BS layer\BLSignIn.cs" />
+    <Compile Include="Custom_Control\PicTureBox_Custom.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DB layer\DBMain.cs" />
     <Compile Include="Forms\FormForgetpassword.cs">
       <SubType>Form</SubType>

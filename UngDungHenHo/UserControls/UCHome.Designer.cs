@@ -37,6 +37,7 @@
             this.pnlListNguoiDungs.Name = "pnlListNguoiDungs";
             this.pnlListNguoiDungs.Size = new System.Drawing.Size(936, 571);
             this.pnlListNguoiDungs.TabIndex = 0;
+            this.pnlListNguoiDungs.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlListNguoiDungs_Paint);
             // 
             // UCHome
             // 
