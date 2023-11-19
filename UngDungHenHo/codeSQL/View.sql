@@ -1,9 +1,3 @@
-create V_NguoiDung
+create View V_NguoiDung
 as
 select * from NguoiDung
-
-
-
-
-
-
