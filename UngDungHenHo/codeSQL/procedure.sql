@@ -20,3 +20,14 @@ BEGIN
     VALUES (@HoTen, @GioiTinh, @NgaySinh, @SDT, @Email, @ID_DangNhap);
 END;
 GO
+
+
+
+CREATE PROCEDURE ThemThichNguoiDung
+    @IdNguoithich INT,
+    @IdNguoiDuocthich INT
+AS
+BEGIN
+    INSERT INTO THICHNGUOIDUNG (ID_NguoiThich, iD_nguoiduocthich)
+    VALUES (@IdNguoithich, @IdNguoiDuocthich);
+END;

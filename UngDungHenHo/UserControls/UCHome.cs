@@ -12,6 +12,8 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using UngDungHenHo.BS_layer;
 using UngDungHenHo.models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace UngDungHenHo.UserControls
 {
     public partial class UCHome : UserControl
@@ -19,13 +21,17 @@ namespace UngDungHenHo.UserControls
         int panelSize = 500;
         Panel[] panels;
         Panel[] panelhotens;
+        PictureBox[] pcboxthichs;
+        PictureBox[] pcboxkhongthichs;
 
         private bool isDragging = new bool();
         private Point offset = new Point();
         BLHome dbHome = null;
         DataTable dtND = null;
-     
-      
+  
+
+
+
 
         public UCHome()
         {
@@ -63,11 +69,6 @@ namespace UngDungHenHo.UserControls
            
         }
 
-
-
-
-
-   
         private void listnguoidung()
         {
 
@@ -76,6 +77,8 @@ namespace UngDungHenHo.UserControls
             int tongnguoidung = dtND.Rows.Count;
             panels = new Panel[tongnguoidung];
             panelhotens = new Panel[tongnguoidung];
+            pcboxthichs = new PictureBox[tongnguoidung];
+            pcboxkhongthichs = new PictureBox[tongnguoidung];
             for (int i = 0; i < tongnguoidung; i++)
             {
                 panels[i] = new Panel();
@@ -91,14 +94,19 @@ namespace UngDungHenHo.UserControls
                 listbaiviet(panels[i], Convert.ToInt32(dtND.Rows[i][0]), i);
               
 
-
-                if(i==0  || i ==1 )
+   
+                if (i==0  || i ==1 )
                     {
                     taohoten(panels[i], dtND.Rows[i][1].ToString(), i);
+                    taothichvakhongthich(panels[i], i);
                     pnlListNguoiDungs.Controls.Add(panels[i]);
-                  
+                   
                 }
             }
+
+
+       
+
         }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
@@ -295,29 +303,77 @@ namespace UngDungHenHo.UserControls
             pnlListNguoiDungs.Controls.Add(panelhotens[i]);
 
         }
-
-
-        private Point tampanel(Panel panel)
+        private void taothichvakhongthich(Panel pnlNguoiDung, int i)
         {
-            int X = panel.Location.X + panel.Width / 2;
-            int Y = panel.Location.Y+ panel.Height / 2;
+            pcboxthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left+100, pnlNguoiDung.Top+100), Color.Black);
+            pcboxkhongthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left + 200, pnlNguoiDung.Top + 100), Color.Blue);
+            pcboxthichs[i].Tag = i;
+            pcboxkhongthichs[i].Tag = i;
 
-            return new Point(X, Y);
-        }
-
-        private bool kiemtrarangoai(Point center, Size size, Point panelLocation, Size panelSize)
-        {
-            int panelARight = center.X + size.Width / 2;
-            int panelABottom = center.Y + size.Height / 2;
-
-            return center.X < panelLocation.X ||
-                   center.Y < panelLocation.Y ||
-                   panelARight > panelLocation.X + panelSize.Width ||
-                   panelABottom > panelLocation.Y + panelSize.Height;
+            pcboxthichs[i].Click += new EventHandler(this.PictureBoxThichClickHandler);
+            pcboxkhongthichs[i].Click += new EventHandler(this.PictureBoxKhongThichClickHandler);
+            pnlListNguoiDungs.Controls.Add(pcboxthichs[i]);
+            pnlListNguoiDungs.Controls.Add(pcboxkhongthichs[i]);
         }
 
 
 
+        private  PictureBox vehinhtronpicturebox( int size, Point location, Color backgroundColor)
+        {
+      
+            PictureBox pcboxhinhtron = new PictureBox();
+            pcboxhinhtron.Size = new Size(size, size);
+            pcboxhinhtron.Location = location;
+            pcboxhinhtron.BackColor = Color.Transparent; 
+
+       
+            pcboxhinhtron.Paint += (sender, e) =>
+            {
+                Graphics g = e.Graphics;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.FillEllipse(new SolidBrush(backgroundColor), 0, 0, pcboxhinhtron.Width, pcboxhinhtron.Height);
+            };
+            return pcboxhinhtron;
+        }
+
+        private void PictureBoxThichClickHandler(object sender, EventArgs e)
+        {
+            PictureBox clickedPictureBox = sender as PictureBox;
+            int tag = int.Parse((sender as Control).Tag.ToString());
+
+            if (clickedPictureBox != null)
+            {
+                dbHome.ThemNguoiDungThich(1, Convert.ToInt32(dtND.Rows[tag][0]));
+
+                pnlListNguoiDungs.Controls.Remove(panels[tag]);
+                pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                if (dtND.Rows.Count > tag + 2)
+                {
+                    taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                    pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
+
+
+                }
+            }
+        }
+        private void PictureBoxKhongThichClickHandler(object sender, EventArgs e)
+        {
+            PictureBox clickedPictureBox = sender as PictureBox;
+
+            int tag = int.Parse((sender as Control).Tag.ToString());
+            if (clickedPictureBox != null)
+            {
+                pnlListNguoiDungs.Controls.Remove(panels[tag]);
+                pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                if (dtND.Rows.Count > tag + 2)
+                {
+                    taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                    pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
+
+
+                }
+            }
+        }
 
 
 
