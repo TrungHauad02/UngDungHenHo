@@ -137,6 +137,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\UCChatting.resx">
       <DependentUpon>UCChatting.cs</DependentUpon>
@@ -167,6 +168,7 @@
     <Content Include="codeSQL\procedure.sql" />
     <Content Include="codeSQL\trigger.sql" />
     <Content Include="codeSQL\view.sql" />
+    <None Include="Resources\Eo_circle_teal_heart.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
