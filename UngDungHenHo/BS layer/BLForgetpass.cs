@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UngDungHenHo.DB_layer;
 using System.Net;
 using System.Windows;
+using System.Data;
 
 namespace UngDungHenHo.BS_layer
 {
@@ -23,6 +24,13 @@ namespace UngDungHenHo.BS_layer
 
         public bool SendCode(string username, string email)
         {
+            string query = $"Select * from THONGTINDANGNHAP where TaiKhoan = '{username}'";
+            string error = String.Empty ;
+            if (dbMain.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+
             Random random = new Random();
             this.oTP = random.Next(1000, 10000);
 
@@ -60,9 +68,10 @@ namespace UngDungHenHo.BS_layer
 
         public bool ChangPass(string username, string password)
         {
-            
-
-            return true;
+            string query = $"UPDATE THONGTINDANGNHAP SET MatKhau = '{password}' WHERE TaiKhoan = '{username}';";
+            string error = String.Empty;
+            dbMain.MyExecuteNonQuery(query, CommandType.Text, ref error);
+            return error == "";
         }
     }
 }
