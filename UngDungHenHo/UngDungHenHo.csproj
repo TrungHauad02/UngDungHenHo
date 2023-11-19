@@ -78,6 +78,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DB layer\DBMain.cs" />
+    <Compile Include="Forms\FormBaoCaoNguoiDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBaoCaoNguoiDung.Designer.cs">
+      <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormForgetpassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <Compile Include="UserControls\UCHome.Designer.cs">
       <DependentUpon>UCHome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FormBaoCaoNguoiDung.resx">
+      <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormForgetpassword.resx">
       <DependentUpon>FormForgetpassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +180,8 @@
     <Content Include="codeSQL\procedure.sql" />
     <Content Include="codeSQL\trigger.sql" />
     <Content Include="codeSQL\view.sql" />
+    <None Include="Picture\icon_khongthich.png" />
+    <None Include="Resources\Image1.bmp" />
     <None Include="Resources\Eo_circle_teal_heart.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
