@@ -92,15 +92,16 @@ namespace UngDungHenHo.UserControls
                 
 
                 listbaiviet(panels[i], Convert.ToInt32(dtND.Rows[i][0]), i);
-              
+                themsukien(panels[i], i);
 
-   
+
+
                 if (i==0  || i ==1 )
                     {
                     taohoten(panels[i], dtND.Rows[i][1].ToString(), i);
                     taothichvakhongthich(panels[i], i);
                     pnlListNguoiDungs.Controls.Add(panels[i]);
-                   
+                    
                 }
             }
 
@@ -222,6 +223,8 @@ namespace UngDungHenHo.UserControls
    
                     panels[tag].Location = newLocation;
                     panelhotens[tag].Location = new Point(panels[tag].Left, panels[tag].Top);
+                    pcboxthichs[tag].Location = new Point(panels[tag].Left + 100, panels[tag].Top + 100);
+                    pcboxkhongthichs[tag].Location = new Point(panels[tag].Left + 200, panels[tag].Top + 100);
 
                 }
             }
@@ -251,15 +254,22 @@ namespace UngDungHenHo.UserControls
                 {
                     panels[tag].Location = panels[tag+1].Location;
                     panelhotens[tag].Location = panelhotens[tag+1].Location;
+                    pcboxthichs[tag].Location = pcboxthichs[tag + 1].Location;
+                    pcboxkhongthichs[tag].Location = pcboxkhongthichs[tag + 1].Location;
                 }
                 else
                 {
                     pnlListNguoiDungs.Controls.Remove(panels[tag]);
                     pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                    pnlListNguoiDungs.Controls.Remove(pcboxthichs[tag]);
+                    pnlListNguoiDungs.Controls.Remove(pcboxkhongthichs[tag]);
+                
                     if (dtND.Rows.Count > tag + 2)
                     {
                         taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                        taothichvakhongthich(panels[tag + 2], tag + 2);
                         pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
+
 
 
                     }
@@ -314,6 +324,7 @@ namespace UngDungHenHo.UserControls
             pcboxkhongthichs[i].Click += new EventHandler(this.PictureBoxKhongThichClickHandler);
             pnlListNguoiDungs.Controls.Add(pcboxthichs[i]);
             pnlListNguoiDungs.Controls.Add(pcboxkhongthichs[i]);
+       
         }
 
 
@@ -338,19 +349,24 @@ namespace UngDungHenHo.UserControls
 
         private void PictureBoxThichClickHandler(object sender, EventArgs e)
         {
-            PictureBox clickedPictureBox = sender as PictureBox;
-            int tag = int.Parse((sender as Control).Tag.ToString());
+            int tag = -1;
+                tag = int.Parse((sender as Control).Tag.ToString());
 
-            if (clickedPictureBox != null)
+            if (tag != -1)
             {
                 dbHome.ThemNguoiDungThich(1, Convert.ToInt32(dtND.Rows[tag][0]));
 
                 pnlListNguoiDungs.Controls.Remove(panels[tag]);
                 pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                pnlListNguoiDungs.Controls.Remove(pcboxthichs[tag]);
+                pnlListNguoiDungs.Controls.Remove(pcboxkhongthichs[tag]);
+
                 if (dtND.Rows.Count > tag + 2)
                 {
                     taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                    taothichvakhongthich(panels[tag + 2], tag + 2);
                     pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
+
 
 
                 }
@@ -358,17 +374,22 @@ namespace UngDungHenHo.UserControls
         }
         private void PictureBoxKhongThichClickHandler(object sender, EventArgs e)
         {
-            PictureBox clickedPictureBox = sender as PictureBox;
-
-            int tag = int.Parse((sender as Control).Tag.ToString());
-            if (clickedPictureBox != null)
+          
+            int tag = -1;
+             tag = int.Parse((sender as Control).Tag.ToString());
+            if (tag != -1)
             {
                 pnlListNguoiDungs.Controls.Remove(panels[tag]);
                 pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                pnlListNguoiDungs.Controls.Remove(pcboxthichs[tag]);
+                pnlListNguoiDungs.Controls.Remove(pcboxkhongthichs[tag]);
+
                 if (dtND.Rows.Count > tag + 2)
                 {
                     taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                    taothichvakhongthich(panels[tag + 2], tag + 2);
                     pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
+
 
 
                 }
