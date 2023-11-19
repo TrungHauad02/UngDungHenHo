@@ -80,6 +80,7 @@
     <Compile Include="models\TinNhan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolvingFlicker.cs" />
     <Compile Include="UserControls\UCChatting.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlNoiDungChat = new System.Windows.Forms.Panel();
             this.pnlChatContent = new System.Windows.Forms.Panel();
             this.pnlChatEnter = new System.Windows.Forms.Panel();
@@ -39,8 +40,10 @@
             this.pnlNguoiDung = new System.Windows.Forms.Panel();
             this.pnlNguoiDungs = new System.Windows.Forms.Panel();
             this.pnlHeaderNguoiDung = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlNoiDungChat.SuspendLayout();
             this.pnlChatEnter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendMessages)).BeginInit();
@@ -72,6 +75,7 @@
             this.pnlChatContent.Name = "pnlChatContent";
             this.pnlChatContent.Size = new System.Drawing.Size(747, 649);
             this.pnlChatContent.TabIndex = 2;
+            this.pnlChatContent.VisibleChanged += new System.EventHandler(this.pnlChatContent_VisibleChanged);
             // 
             // pnlChatEnter
             // 
@@ -168,17 +172,6 @@
             this.pnlHeaderNguoiDung.Size = new System.Drawing.Size(268, 100);
             this.pnlHeaderNguoiDung.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat Extra Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
-            this.label1.Location = new System.Drawing.Point(123, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Chat";
-            // 
             // iconPictureBox1
             // 
             this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -193,6 +186,25 @@
             this.iconPictureBox1.TabIndex = 1;
             this.iconPictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Extra Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.label1.Location = new System.Drawing.Point(123, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 33);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Chat";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.Timer_scroll_check);
+            // 
             // UCChatting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -201,6 +213,7 @@
             this.Controls.Add(this.pnlNguoiDung);
             this.Name = "UCChatting";
             this.Size = new System.Drawing.Size(1015, 784);
+            this.VisibleChanged += new System.EventHandler(this.UCChatting_VisibleChanged);
             this.pnlNoiDungChat.ResumeLayout(false);
             this.pnlChatEnter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSendMessages)).EndInit();
@@ -229,5 +242,7 @@
         private System.Windows.Forms.Panel pnlHeaderNguoiDung;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
