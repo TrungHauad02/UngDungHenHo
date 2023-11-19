@@ -14,6 +14,7 @@ namespace UngDungHenHo.Forms
     public partial class FormForgetpassword : Form
     {
         BLForgetpass blForgetpass;
+        bool isCheckOTP = false;
         public FormForgetpassword()
         {
             InitializeComponent();
@@ -33,22 +34,31 @@ namespace UngDungHenHo.Forms
                 this.lblErrorOTP.Text = "Enter a OTP"; 
                 return; 
             }
-            if(blForgetpass.CheckCode(this.txtOTP.Text.Trim()))
+            if(isCheckOTP)
             {
-                Label lblPassword = new Label();
-                lblPassword.Location = this.lblMail.Location;
-                lblPassword.Text = "Password:";
-                lblPassword.Size = this.lblMail.Size;
-                lblPassword.Font = this.lblMail.Font;
-                lblPassword.ForeColor = this.lblMail.ForeColor;
-                lblPassword.BackColor = this.lblMail.BackColor;
-                this.lblMail.Visible = false;
+                if (blForgetpass.ChangPass(this.txtUsername.Text.Trim(), this.txtMail.Text.Trim()))
+                    MessageBox.Show("Change password succeed");
+                else
+                    MessageBox.Show("Error");
+                return;
+            }
+            if(blForgetpass.CheckCode(this.txtOTP.Text.Trim()))
+            {      
                 this.lblOTP.Visible = false;
                 this.txtOTP.Visible = false;
                 this.btnSendCode.Visible = false;
                 this.txtUsername.ReadOnly = true;
-                this.btnExit.Location = new Point(this.btnExit.Location.X, this.btnExit.Location.Y - 100);
-                this.btnSubmit.Location = new Point(this.btnSubmit.Location.X, this.btnSubmit.Location.Y - 100);
+
+                this.lblMail.Text = "Password";
+
+                this.txtMail.Font = new Font("Wingdings", 30, FontStyle.Regular);
+                this.txtMail.PasswordChar = 'l';
+                this.txtMail.Text = "";
+
+                this.btnExit.Location = new Point(this.btnExit.Location.X, 420);
+                this.btnSubmit.Location = new Point(this.btnSubmit.Location.X, 420);
+                
+                isCheckOTP = true;
             }
             else
             {
@@ -64,7 +74,7 @@ namespace UngDungHenHo.Forms
             if(blForgetpass.SendCode(this.txtUsername.Text, this.txtMail.Text))
                 MessageBox.Show("Email sent successfully!");
             else
-                MessageBox.Show($"Error");
+                MessageBox.Show($"Error: Cannot sent email or your username is wrong");
         }
 
         private bool CheckFill()
