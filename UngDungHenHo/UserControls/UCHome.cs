@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using UngDungHenHo.BS_layer;
 using UngDungHenHo.models;
@@ -15,29 +16,46 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCHome : UserControl
     {
-        private bool[] isDragging = new bool[3];
-        private Point[] offset = new Point[3];
+        int panelSize = 500;
+        Panel[] panels;
+        Panel[] panelhotens;
+
+        private bool isDragging = new bool();
+        private Point offset = new Point();
         BLHome dbHome = null;
         DataTable dtND = null;
+     
+      
+
         public UCHome()
         {
             InitializeComponent();
-        
-            this.pnlListNguoiDungs.Controls.Add(AddScrollBar());
 
+            pnlListNguoiDungs.Size= new Size(1000,1000);
+            
+            
             listnguoidung();
 
+
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleparams = base.CreateParams;
+                handleparams.ExStyle |= 0x02000000;
+                return handleparams;
+            }
         }
 
 
-       
-        public VScrollBar AddScrollBar()
+
+        public void AddScrollBar(Panel panel)
         {
             VScrollBar vsb = new VScrollBar();
             vsb.Dock = DockStyle.Right;
             vsb.Visible = false;
-            return vsb;
-          
+            panel.Controls.Add(vsb);
         }
 
         private void UCHome_Load(object sender, EventArgs e)
@@ -45,89 +63,64 @@ namespace UngDungHenHo.UserControls
            
         }
 
-        private void ResetPanels()
-        {
-            pnlListNguoiDungs.Controls.Clear();
-            for (int i = 0; i < 10; i++)
-            {
-                pnlListNguoiDungs.Controls.Add(panels[i]);
-            }
-                
-
-        }
 
 
 
-        Panel[] panels = new Panel[100];
+
+   
         private void listnguoidung()
         {
 
             dbHome = new BLHome();
             dtND = dbHome.LayDanhSachNguoiDung();
             int tongnguoidung = dtND.Rows.Count;
-
-
+            panels = new Panel[tongnguoidung];
+            panelhotens = new Panel[tongnguoidung];
             for (int i = 0; i < tongnguoidung; i++)
             {
                 panels[i] = new Panel();
-
+                panels[i].AutoScroll = true;
+                AddScrollBar(panels[i]);
                 panels[i].BackColor = Color.Red;
-                panels[i].Width = pnlListNguoiDungs.Width-200;
-                panels[i].Height = pnlListNguoiDungs.Height-200;
-                panels[i].Left = pnlListNguoiDungs.Left + 200;
-                panels[i].Top = pnlListNguoiDungs.Top +200;
-                VScrollBar vsb = new VScrollBar();
-                vsb.Dock = DockStyle.Right;
-                vsb.Visible = false;
-                listbaiviet(panels[i], Convert.ToInt32(dtND.Rows[i][0]), dtND.Rows[i][1].ToString(), i);
+                
+                panels[i].Size = new Size(panelSize, panelSize);
 
-                panels[i].Controls.Add(vsb);
+                panels[i].Location= new Point(150, 150);
+                
 
-                /*              
-                                panels[i].Tag = i;
-                                panels[i].MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
-                                panels[i].MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
-                                panels[i].MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);*/
+                listbaiviet(panels[i], Convert.ToInt32(dtND.Rows[i][0]), i);
+              
 
-    
-                pnlListNguoiDungs.Controls.Add(panels[i]);
+
+                if(i==0  || i ==1 )
+                    {
+                    taohoten(panels[i], dtND.Rows[i][1].ToString(), i);
+                    pnlListNguoiDungs.Controls.Add(panels[i]);
+                  
+                }
             }
         }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
-        private void listbaiviet(Panel pnlNguoiDung, int idNguoiDung, string HoTen, int tagnguoidung)
+        private void listbaiviet(Panel pnlNguoiDung, int idNguoiDung, int tagnguoidung)
         {
             DataTable dtBaiVietNguoiDung = dbHome.LayDanhSachBaiVietNguoiDung(idNguoiDung);
+
+
+
             int tongbaiviet = dtBaiVietNguoiDung.Rows.Count;
             Panel[] pnlbaiviet = new Panel[tongbaiviet];
-
-
-          
-            Label lbHoTen = new Label();
             Label[] lbNoiDung = new Label[tongbaiviet];
-            lbHoTen.Text = "tui tên " + HoTen;
 
-            lbHoTen.Width = pnlNguoiDung.Width/5;
-            lbHoTen.Height = pnlNguoiDung.Height / 5;
-            lbHoTen.Top = pnlNguoiDung.Top - 200;    
-
-            pnlNguoiDung.Controls.Add(lbHoTen);
 
             for (int i = 0; i < tongbaiviet; i++)
             {
 
                 pnlbaiviet[i] = new Panel();
-                pnlbaiviet[i].Width = pnlNguoiDung.Width-100;
-                pnlbaiviet[i].Height = pnlNguoiDung.Height;
-                pnlbaiviet[i].BackColor = Color.Yellow; 
-
-                lbNoiDung[i] = new Label();
-                lbNoiDung[i].Width  = pnlbaiviet[i].Width/5;
-                lbNoiDung[i].Height = pnlbaiviet[i].Height / 5;
-
+                pnlbaiviet[i].Size = pnlNguoiDung.Size - new Size(100, 100);
+                pnlbaiviet[i].BackColor = Color.Yellow;
 
                 PictureBox picPhim = new PictureBox();
-               
                 object rawValue = dtBaiVietNguoiDung.Rows[i][2];
                 if (rawValue != DBNull.Value)
                 {
@@ -137,30 +130,51 @@ namespace UngDungHenHo.UserControls
                         Image hinhAnh = Image.FromStream(ms);
                         picPhim.Image = hinhAnh;
                     }
-         
-
-                    
-                    picPhim.Width = pnlbaiviet[i].Width-100;
-                    picPhim.Height = pnlbaiviet[i].Height;
                     picPhim.SizeMode = PictureBoxSizeMode.StretchImage;
+                    picPhim.Size = pnlbaiviet[i].Size;
+/*
+                    picPhim.Size = pnlbaiviet[i].Size - new Size(100, 100);*/
+                    /*  picPhim.Location = new Point(100, 100);*/
 
                     pnlbaiviet[i].Controls.Add(picPhim);
                 }
-                picPhim.Width = pnlbaiviet[i].Width;
-                picPhim.Width = pnlbaiviet[i].Height;
 
-                    
-
-
+            
+                lbNoiDung[i] = new Label();
+                lbNoiDung[i].Width = pnlbaiviet[i].Width;
+                lbNoiDung[i].Height = pnlbaiviet[i].Height / 5;
                 lbNoiDung[i].Text = "Mô tả " + dtBaiVietNguoiDung.Rows[i][1].ToString();
-                lbNoiDung[i].Location = new Point(10, pnlNguoiDung.Height - 20);
-                pnlbaiviet[i].Controls.Add(lbNoiDung[i]);
+
+                pnlNguoiDung.Controls.Add(lbNoiDung[i]);
+
+                if (i == 0)
+                {
+                    pnlbaiviet[i].Location = new Point(50, 50);
+            
+                }
+                else
+                {
+                    pnlbaiviet[i].Location = new Point(pnlbaiviet[i - 1].Left, lbNoiDung[i - 1].Bottom + 50);
+                }
+                lbNoiDung[i].Location = new Point(pnlbaiviet[i].Left, pnlbaiviet[i].Bottom+10);
+
+                themsukien(picPhim, tagnguoidung);
+                themsukien(pnlbaiviet[i], tagnguoidung);
                
-                pnlbaiviet[i].Tag = tagnguoidung;
+
+               /* pnlbaiviet[i].Tag = tagnguoidung;
                 pnlbaiviet[i].MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
                 pnlbaiviet[i].MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
                 pnlbaiviet[i].MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);
-            
+
+
+                picPhim.Tag = tagnguoidung;
+                picPhim.MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
+                picPhim.MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
+                picPhim.MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);*/
+
+
+
                 pnlNguoiDung.Controls.Add(pnlbaiviet[i]);
                
             }
@@ -172,47 +186,34 @@ namespace UngDungHenHo.UserControls
         {
 
 
-            int tag = 0;
-            if (sender is Panel)
-            {
-                tag = int.Parse((sender as Panel).Tag.ToString());
-            }
-            if (sender is Label)
-            {
-                tag = int.Parse((sender as Label).Tag.ToString());
-            }
+
+            int  tag = int.Parse((sender as Control).Tag.ToString());
+      
+         
 
 
             if (e.Button == MouseButtons.Left)
             {
-                isDragging[tag] = true;
-                offset[tag] = e.Location;
-                
-
-
+                isDragging = true;
+                offset = e.Location;
+              
             }
         }
 
 
         private void PanelMouseMoveHandler(object sender, MouseEventArgs e)
         {
-            int tag = 0;
+            int tag = int.Parse((sender as Control).Tag.ToString());
 
-            if (sender is Panel)
-            {
-                tag = int.Parse((sender as Panel).Tag.ToString());
-            }
-
-            if (isDragging[tag])
+            if (isDragging)
             {
               
-                Point newLocation = new Point(panels[tag].Left + e.X - offset[tag].X, panels[tag].Top + e.Y - offset[tag].Y);
+                Point newLocation = new Point(panels[tag].Left + e.X - offset.X, panels[tag].Top + e.Y - offset.Y);
                 if (panels[tag].Location != newLocation)
                 {
    
                     panels[tag].Location = newLocation;
-                
-
+                    panelhotens[tag].Location = new Point(panels[tag].Left, panels[tag].Top);
 
                 }
             }
@@ -221,34 +222,101 @@ namespace UngDungHenHo.UserControls
 
         private void PanelMouseUpHandler(object sender, MouseEventArgs e)
         {
-            int tag = 0;
-            if (sender is Panel)
-            {
-                tag = int.Parse((sender as Panel).Tag.ToString());
-            }
-            if (sender is Label)
-            {
-                tag = int.Parse((sender as Label).Tag.ToString());
-            }
+            int tag = int.Parse((sender as Control).Tag.ToString());
 
-            if (isDragging[tag])
-            {
-                isDragging[tag] = false;
 
-                if (pnlListNguoiDungs.ClientRectangle.Contains(pnlListNguoiDungs.PointToClient(panels[tag].Location)))
+            if (isDragging)
+            {
+                int X = panels[tag].Location.X + panels[tag].Width / 2;
+                int Y = panels[tag].Location.Y + panels[tag].Height / 2;
+
+
+                Point mousePosition =new Point(X,Y);
+
+                
+
+                    
+
+                // Kiểm tra xem điểm có nằm trong Panel B hay không
+                if (mousePosition.X >= 0 && mousePosition.X <= panels[tag+1].Width &&
+  mousePosition.Y >= 0 && mousePosition.Y <= panels[tag+1].Height)
                 {
-                   
+                    panels[tag].Location = panels[tag+1].Location;
+                    panelhotens[tag].Location = panelhotens[tag+1].Location;
                 }
                 else
                 {
-
                     pnlListNguoiDungs.Controls.Remove(panels[tag]);
+                    pnlListNguoiDungs.Controls.Remove(panelhotens[tag]);
+                    if (dtND.Rows.Count > tag + 2)
+                    {
+                        taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
+                        pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
 
-                }
+
+                    }
+                }    
+
+
+
+                isDragging = false;
 
             }
         }
- 
+        private void ptboxthichvahuy(Panel panel)
+        {
+            Panel panelA = new Panel();
+            panelA.Size = new Size(200, 200);
+            panelA.Location = new Point(50, 50);
+            panelA.BackColor = Color.LightGray;
+
+            panel.Controls.Add(panelA);
+
+        }
+        private void themsukien(Control control, int i)
+        {
+            control.Tag = i;
+            control.MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
+            control.MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
+            control.MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);
+        }
+        private void taohoten(Panel pnlNguoiDung,  string HoTen, int i)
+        {
+            panelhotens[i] = new Panel();
+            Label lbHoTen = new Label();
+   
+            lbHoTen.Text = "tui tên " + HoTen;
+            panelhotens[i].Width = lbHoTen.Width = pnlNguoiDung.Width;
+            panelhotens[i].Height = lbHoTen.Height = 20;
+            panelhotens[i].Location = new Point(pnlNguoiDung.Left, pnlNguoiDung.Top);
+            lbHoTen.Location = new Point(0, 0);
+            panelhotens[i].BackColor = Color.Orange;
+            panelhotens[i].Controls.Add(lbHoTen);
+            pnlListNguoiDungs.Controls.Add(panelhotens[i]);
+
+        }
+
+
+        private Point tampanel(Panel panel)
+        {
+            int X = panel.Location.X + panel.Width / 2;
+            int Y = panel.Location.Y+ panel.Height / 2;
+
+            return new Point(X, Y);
+        }
+
+        private bool kiemtrarangoai(Point center, Size size, Point panelLocation, Size panelSize)
+        {
+            int panelARight = center.X + size.Width / 2;
+            int panelABottom = center.Y + size.Height / 2;
+
+            return center.X < panelLocation.X ||
+                   center.Y < panelLocation.Y ||
+                   panelARight > panelLocation.X + panelSize.Width ||
+                   panelABottom > panelLocation.Y + panelSize.Height;
+        }
+
+
 
 
 

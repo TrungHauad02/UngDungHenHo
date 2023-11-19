@@ -30,24 +30,33 @@
         {
             this.pnlListNguoiDungs = new System.Windows.Forms.Panel();
             this.pnltong = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlListNguoiDungs.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlListNguoiDungs
             // 
+            this.pnlListNguoiDungs.Controls.Add(this.panel1);
             this.pnlListNguoiDungs.Controls.Add(this.pnltong);
             this.pnlListNguoiDungs.Location = new System.Drawing.Point(3, 3);
             this.pnlListNguoiDungs.Name = "pnlListNguoiDungs";
-            this.pnlListNguoiDungs.Size = new System.Drawing.Size(873, 502);
+            this.pnlListNguoiDungs.Size = new System.Drawing.Size(936, 571);
             this.pnlListNguoiDungs.TabIndex = 0;
             // 
             // pnltong
             // 
-            this.pnltong.Location = new System.Drawing.Point(396, 402);
+            this.pnltong.Location = new System.Drawing.Point(216, 270);
             this.pnltong.Name = "pnltong";
             this.pnltong.Size = new System.Drawing.Size(114, 100);
             this.pnltong.TabIndex = 1;
             this.pnltong.Paint += new System.Windows.Forms.PaintEventHandler(this.pnltong_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(368, 270);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(114, 100);
+            this.panel1.TabIndex = 2;
             // 
             // UCHome
             // 
@@ -55,7 +64,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlListNguoiDungs);
             this.Name = "UCHome";
-            this.Size = new System.Drawing.Size(925, 508);
+            this.Size = new System.Drawing.Size(956, 593);
             this.Load += new System.EventHandler(this.UCHome_Load);
             this.pnlListNguoiDungs.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -66,5 +75,6 @@
 
         private System.Windows.Forms.Panel pnlListNguoiDungs;
         private System.Windows.Forms.Panel pnltong;
+        private System.Windows.Forms.Panel panel1;
     }
 }
