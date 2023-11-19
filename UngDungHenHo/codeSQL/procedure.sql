@@ -45,16 +45,15 @@ BEGIN
     EXEC dbo.SignIn @HoTen, @GioiTinh, @NgaySinh, @SDT, @Email, @ID_DangNhap;
 END;
 GO
-CREATE PROCEDURE ThemThichNguoiDung
+
+create PROCEDURE [dbo].[ThemThichNguoiDung]
     @IdNguoithich INT,
     @IdNguoiDuocthich INT
 AS
 BEGIN
-    INSERT INTO THICHNGUOIDUNG (ID_NguoiThich, iD_nguoiduocthich)
+    INSERT INTO THICHNGUOIDUNG (ID_NguoiThich, ID_NguoiDuocThich)
     VALUES (@IdNguoithich, @IdNguoiDuocthich);
 END;
 
---------L?y n?i dung tin nh?n--------
-create proc prc_laynoidungtinnhan @id_gui int, @id_nhan int  
-as   
- select * from TINNHAN where ID_NguoiGui = @id_gui and ID_NguoiNhan = @id_nhan
+
+

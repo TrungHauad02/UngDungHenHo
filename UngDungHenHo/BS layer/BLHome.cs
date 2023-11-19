@@ -37,7 +37,8 @@ namespace UngDungHenHo.BS_layer
         }
         public void ThemNguoiDungThich(int IdNguoithich, int IdNguoiDuocthich)
         {
-            SqlCommand cmd = new SqlCommand(" dbo.Proc_ThemThichNguoiDung(@IdNguoithich)", db.OpenConnect());
+
+            SqlCommand cmd = new SqlCommand("dbo.ThemThichNguoiDung", db.OpenConnect());
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@IdNguoithich", IdNguoithich);
