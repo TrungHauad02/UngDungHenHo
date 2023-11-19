@@ -56,7 +56,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            this.pnlBody.Controls.Add(new UCChatting());
+            this.pnlBody.Controls.Add(new UCChatting(FormMain.account.Id));
         }
 
         private void btnFinding_Click(object sender, EventArgs e)
