@@ -24,19 +24,18 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCChatting : UserControl
     {
-        int idDangNhap = 1;
+        int idDangNhap;
         BLChatting blchat = new BLChatting();
         List<NguoiDung> listNguoiDungs = new List<NguoiDung>();
         private int idNguoiDungSelected = 0;
         List<TinNhan> listtinnhans = new List<TinNhan>();
         Thread thr = null;
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer checkscroll = new System.Windows.Forms.Timer();
-
-        
-        public UCChatting()
+        System.Windows.Forms.Timer checkscroll = new System.Windows.Forms.Timer();    
+        public UCChatting(int iddangnhap)
         {
             InitializeComponent();
+            this.idDangNhap = iddangnhap;
             timer.Interval = (100);
             timer.Tick += new EventHandler(timer1_Tick);
             checkscroll.Interval = (100);
@@ -134,14 +133,9 @@ namespace UngDungHenHo.UserControls
             timer.Start();
             
         }
-        private void pnlChatContent_Scroll()
-        {
-
-        }
         private void NguoiDung_MouseMove(object sender, MouseEventArgs e)
         {
             Change_StateHover(sender, true, Color.FromArgb(173, 173, 173), Color.FromArgb(224, 222, 222),Color.FromArgb(255,255,255));
-
         }
         private void NguoiDung_MouseLeave(object sender , EventArgs e)
         {
@@ -207,7 +201,6 @@ namespace UngDungHenHo.UserControls
 
             return pnl;
         }
-
         public void loadDoanChat()
         {
 
@@ -331,7 +324,6 @@ namespace UngDungHenHo.UserControls
             }
             par.BackColor = BackColor;
         }
-
         private void UCChatting_VisibleChanged(object sender, EventArgs e)
         {
            
@@ -357,14 +349,12 @@ namespace UngDungHenHo.UserControls
                
             }
         }
-
         private void pnlChatContent_VisibleChanged(object sender, EventArgs e)
         {
 
         }
         private void Timer_scroll_check(object sender, EventArgs e)
         {
-
             if (this.pnlChatContent.VerticalScroll.Visible)
             {
                 int currentScrollPosition = pnlChatContent.VerticalScroll.Value;
@@ -383,8 +373,6 @@ namespace UngDungHenHo.UserControls
             {
                 timer.Start();
             }
-
-           
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

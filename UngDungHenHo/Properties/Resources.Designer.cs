@@ -63,19 +63,9 @@ namespace UngDungHenHo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_khongthich {
+        internal static System.Drawing.Bitmap Eo_circle_teal_heart_svg {
             get {
-                object obj = ResourceManager.GetObject("icon_khongthich", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_thich {
-            get {
-                object obj = ResourceManager.GetObject("icon_thich", resourceCulture);
+                object obj = ResourceManager.GetObject("Eo_circle_teal_heart.svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
