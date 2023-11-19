@@ -14,10 +14,13 @@ namespace UngDungHenHo.DB_layer
         SqlConnection conn = null;
         SqlCommand comm = null;
         SqlDataAdapter da = null;
+
+        public SqlCommand Comm { get => comm; set => comm = value; }
+
         public DBMain()
         {
             conn = new SqlConnection(ConnStr);
-            comm = conn.CreateCommand();
+            Comm = conn.CreateCommand();
 
         }
         public SqlConnection OpenConnect()
@@ -35,14 +38,14 @@ namespace UngDungHenHo.DB_layer
                 conn.Close();
             }
         }
-        public DataSet ExecuteQueryDataSet(string strSQL, CommandType ct)
+        public DataSet ExecuteQueryDataSet(string strSQL, CommandType ct, ref string error)
         {
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
-            comm.CommandText = strSQL;
-            comm.CommandType = ct;
-            da = new SqlDataAdapter(comm);
+            Comm.CommandText = strSQL;
+            Comm.CommandType = ct;
+            da = new SqlDataAdapter(Comm);
             DataSet ds = new DataSet();
             da.Fill(ds);
             return ds;
@@ -53,11 +56,11 @@ namespace UngDungHenHo.DB_layer
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
-            comm.CommandText = strSQL;
-            comm.CommandType = ct;
+            Comm.CommandText = strSQL;
+            Comm.CommandType = ct;
             try
             {
-                comm.ExecuteNonQuery();
+                Comm.ExecuteNonQuery();
                 f = true;
             }
             catch (SqlException ex)

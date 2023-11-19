@@ -22,7 +22,11 @@ namespace UngDungHenHo
         public FormMain()
         {
             InitializeComponent();
-
+            FormLogin formLogin = new FormLogin();
+            this.Visible = false;
+            if(FormMain.account == null || FormMain.account.Id == -1)
+                formLogin.ShowDialog();
+            this.Visible = true;
         }
 
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
@@ -63,12 +67,18 @@ namespace UngDungHenHo
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            SetSelected(sender);
-            this.pnlBody.Controls.Clear();
-            this.Visible = false;
-            FormLogin formLogin = new FormLogin();
-            formLogin.ShowDialog();
-            this.Visible = true;
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?"
+                , "Xác nhận đăng xuất", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                SetSelected(sender);
+                this.pnlBody.Controls.Clear();
+                this.Visible = false;
+                FormLogin formLogin = new FormLogin();
+                if (FormMain.account == null || FormMain.account.Id == -1)
+                    formLogin.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
