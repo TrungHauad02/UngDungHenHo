@@ -38,6 +38,7 @@ namespace UngDungHenHo.UserControls
             InitializeComponent();
 
             pnlListNguoiDungs.Size= new Size(1000,1000);
+            pnlListNguoiDungs.BackColor = Color.Green;
             
             
             listnguoidung();
@@ -141,8 +142,9 @@ namespace UngDungHenHo.UserControls
                     }
                     picPhim.SizeMode = PictureBoxSizeMode.StretchImage;
                     picPhim.Size = pnlbaiviet[i].Size;
-/*
-                    picPhim.Size = pnlbaiviet[i].Size - new Size(100, 100);*/
+                   
+                    /*
+                                        picPhim.Size = pnlbaiviet[i].Size - new Size(100, 100);*/
                     /*  picPhim.Location = new Point(100, 100);*/
 
                     pnlbaiviet[i].Controls.Add(picPhim);
@@ -169,20 +171,6 @@ namespace UngDungHenHo.UserControls
 
                 themsukien(picPhim, tagnguoidung);
                 themsukien(pnlbaiviet[i], tagnguoidung);
-               
-
-               /* pnlbaiviet[i].Tag = tagnguoidung;
-                pnlbaiviet[i].MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
-                pnlbaiviet[i].MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
-                pnlbaiviet[i].MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);
-
-
-                picPhim.Tag = tagnguoidung;
-                picPhim.MouseDown += new MouseEventHandler(this.PanelMouseDownHandler);
-                picPhim.MouseMove += new MouseEventHandler(this.PanelMouseMoveHandler);
-                picPhim.MouseUp += new MouseEventHandler(this.PanelMouseUpHandler);*/
-
-
 
                 pnlNguoiDung.Controls.Add(pnlbaiviet[i]);
                
@@ -243,10 +231,6 @@ namespace UngDungHenHo.UserControls
 
 
                 Point mousePosition =new Point(X,Y);
-
-                
-
-                    
 
                 // Kiểm tra xem điểm có nằm trong Panel B hay không
                 if (mousePosition.X >= 0 && mousePosition.X <= panels[tag+1].Width &&
@@ -315,8 +299,8 @@ namespace UngDungHenHo.UserControls
         }
         private void taothichvakhongthich(Panel pnlNguoiDung, int i)
         {
-            pcboxthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left+100, pnlNguoiDung.Top+100), Color.Black);
-            pcboxkhongthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left + 200, pnlNguoiDung.Top + 100), Color.Blue);
+            pcboxthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left+100, pnlNguoiDung.Top+100),UngDungHenHo.Properties.Resources.icon_thich);
+            pcboxkhongthichs[i] = vehinhtronpicturebox(50, new Point(pnlNguoiDung.Left + 200, pnlNguoiDung.Top + 100), UngDungHenHo.Properties.Resources.icon_khongthich);
             pcboxthichs[i].Tag = i;
             pcboxkhongthichs[i].Tag = i;
 
@@ -329,21 +313,17 @@ namespace UngDungHenHo.UserControls
 
 
 
-        private  PictureBox vehinhtronpicturebox( int size, Point location, Color backgroundColor)
+        private  PictureBox vehinhtronpicturebox( int size, Point location, Image hinhanh)
         {
       
             PictureBox pcboxhinhtron = new PictureBox();
             pcboxhinhtron.Size = new Size(size, size);
             pcboxhinhtron.Location = location;
-            pcboxhinhtron.BackColor = Color.Transparent; 
+            pcboxhinhtron.BackColor = Color.Transparent;
+            pcboxhinhtron.BackgroundImage = hinhanh;
+            pcboxhinhtron.BackgroundImageLayout = ImageLayout.Stretch;
+         
 
-       
-            pcboxhinhtron.Paint += (sender, e) =>
-            {
-                Graphics g = e.Graphics;
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                g.FillEllipse(new SolidBrush(backgroundColor), 0, 0, pcboxhinhtron.Width, pcboxhinhtron.Height);
-            };
             return pcboxhinhtron;
         }
 
@@ -366,8 +346,6 @@ namespace UngDungHenHo.UserControls
                     taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                     taothichvakhongthich(panels[tag + 2], tag + 2);
                     pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-
-
 
                 }
             }
@@ -401,6 +379,11 @@ namespace UngDungHenHo.UserControls
 
 
         private void pnltong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlListNguoiDungs_Paint(object sender, PaintEventArgs e)
         {
 
         }
