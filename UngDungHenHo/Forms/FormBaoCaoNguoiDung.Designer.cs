@@ -32,6 +32,7 @@
             this.txtNoiDungBaoCao = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGui = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtHoTen
@@ -46,7 +47,7 @@
             // 
             // txtNoiDungBaoCao
             // 
-            this.txtNoiDungBaoCao.Location = new System.Drawing.Point(151, 132);
+            this.txtNoiDungBaoCao.Location = new System.Drawing.Point(151, 93);
             this.txtNoiDungBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.txtNoiDungBaoCao.Multiline = true;
             this.txtNoiDungBaoCao.Name = "txtNoiDungBaoCao";
@@ -61,27 +62,38 @@
             this.label10.Location = new System.Drawing.Point(11, 20);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 17);
+            this.label10.Size = new System.Drawing.Size(135, 17);
             this.label10.TabIndex = 20;
-            this.label10.Text = "Họ tên  ";
+            this.label10.Text = "Người Bị Báo Cáo";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(158)))), ((int)(((byte)(179)))));
-            this.label1.Location = new System.Drawing.Point(11, 133);
+            this.label1.Location = new System.Drawing.Point(11, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 17);
             this.label1.TabIndex = 21;
             this.label1.Text = "Nội dung báo cáo";
             // 
+            // btnGui
+            // 
+            this.btnGui.Location = new System.Drawing.Point(151, 240);
+            this.btnGui.Name = "btnGui";
+            this.btnGui.Size = new System.Drawing.Size(75, 23);
+            this.btnGui.TabIndex = 22;
+            this.btnGui.Text = "Gửi";
+            this.btnGui.UseVisualStyleBackColor = true;
+            this.btnGui.Click += new System.EventHandler(this.btnGui_Click);
+            // 
             // FormBaoCaoNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 434);
+            this.ClientSize = new System.Drawing.Size(693, 352);
+            this.Controls.Add(this.btnGui);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtNoiDungBaoCao);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.TextBox txtNoiDungBaoCao;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGui;
     }
 }
