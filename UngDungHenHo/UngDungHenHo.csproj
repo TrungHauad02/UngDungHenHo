@@ -75,11 +75,18 @@
     <Compile Include="BS layer\BLHome.cs" />
     <Compile Include="BS layer\BLLogin.cs" />
     <Compile Include="BS layer\BLProfile.cs" />
+    <Compile Include="BS layer\BLSearch.cs" />
     <Compile Include="BS layer\BLSignIn.cs" />
     <Compile Include="Custom_Control\PicTureBox_Custom.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DB layer\DBMain.cs" />
+    <Compile Include="Forms\FKqTimKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FKqTimKiem.Designer.cs">
+      <DependentUpon>FKqTimKiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormBaoCaoNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +123,12 @@
     <Compile Include="Forms\UCProfile.Designer.cs">
       <DependentUpon>UCProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UCSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UCSearch.Designer.cs">
+      <DependentUpon>UCSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\NguoiDung.cs" />
     <Compile Include="models\TaiKhoan.cs" />
     <Compile Include="models\TinNhan.cs" />
@@ -134,6 +147,9 @@
     <Compile Include="UserControls\UCHome.Designer.cs">
       <DependentUpon>UCHome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FKqTimKiem.resx">
+      <DependentUpon>FKqTimKiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormBaoCaoNguoiDung.resx">
       <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UCProfile.resx">
       <DependentUpon>UCProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UCSearch.resx">
+      <DependentUpon>UCSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

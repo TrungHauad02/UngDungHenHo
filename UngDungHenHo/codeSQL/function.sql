@@ -128,5 +128,17 @@ RETURN
 );
 go
 
-
+CREATE FUNCTION dbo.GetNguoiDungById_DangNhap
+(
+    @ID_DangNhap INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [ID_NguoiDung], [HoTen], [NgaySinh], [AnhDaiDien], [MoTaCaNhan]
+    FROM [NHANTINHENHO].[dbo].[NGUOIDUNG]
+    WHERE [ID_DangNhap] = @ID_DangNhap
+);
+go
 

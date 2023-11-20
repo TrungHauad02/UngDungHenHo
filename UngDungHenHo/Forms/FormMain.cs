@@ -63,6 +63,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCSearch());
         }
 
         private void btnUser_Click(object sender, EventArgs e)
