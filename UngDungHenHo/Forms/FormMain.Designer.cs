@@ -40,9 +40,7 @@
             this.btnHome = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox_Custom1 = new UngDungHenHo.Custom_Control.PictureBox_Custom();
             this.pnlMain.SuspendLayout();
-            this.pnlBody.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).BeginInit();
@@ -51,7 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnChatting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Custom1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -67,7 +64,6 @@
             // 
             // pnlBody
             // 
-            this.pnlBody.Controls.Add(this.pictureBox_Custom1);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 69);
             this.pnlBody.Name = "pnlBody";
@@ -221,19 +217,6 @@
             this.panel2.Size = new System.Drawing.Size(1015, 5);
             this.panel2.TabIndex = 1;
             // 
-            // pictureBox_Custom1
-            // 
-            this.pictureBox_Custom1.BackColor = System.Drawing.Color.RosyBrown;
-            this.pictureBox_Custom1.BackgroundImage = global::UngDungHenHo.Properties.Resources.Eo_circle_teal_heart_svg;
-            this.pictureBox_Custom1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox_Custom1.BorderRadius = 80;
-            this.pictureBox_Custom1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_Custom1.Location = new System.Drawing.Point(192, 114);
-            this.pictureBox_Custom1.Name = "pictureBox_Custom1";
-            this.pictureBox_Custom1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox_Custom1.TabIndex = 0;
-            this.pictureBox_Custom1.TabStop = false;
-            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -244,7 +227,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
             this.pnlMain.ResumeLayout(false);
-            this.pnlBody.ResumeLayout(false);
             this.pnlFooter.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).EndInit();
@@ -253,7 +235,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnChatting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Custom1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -272,7 +253,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlBody;
-        private Custom_Control.PictureBox_Custom pictureBox_Custom1;
     }
 }
 

@@ -63,12 +63,6 @@ namespace UngDungHenHo.UserControls
         {
            
         }
-
-
-
-
-
-   
         private void listnguoidung()
         {
 
@@ -204,7 +198,7 @@ namespace UngDungHenHo.UserControls
    
                     panels[tag].Location = newLocation;
                     panelhotens[tag].Location = new Point(panels[tag].Left, panels[tag].Top);
-
+                    
                 }
             }
 
@@ -238,7 +232,7 @@ namespace UngDungHenHo.UserControls
                     {
                         taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                         pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-
+                        taothichvakhongthich(panels[tag + 2], tag + 2);
 
                     }
                 }    
@@ -368,9 +362,6 @@ namespace UngDungHenHo.UserControls
                     taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                     taothichvakhongthich(panels[tag + 2], tag + 2);
                     pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-
-
-
                 }
             }
         }
