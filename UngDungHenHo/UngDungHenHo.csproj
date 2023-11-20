@@ -181,6 +181,7 @@
     <Content Include="codeSQL\procedure.sql" />
     <Content Include="codeSQL\trigger.sql" />
     <Content Include="codeSQL\view.sql" />
+    <None Include="Picture\anhnguoidungkhongco.png" />
     <None Include="Picture\icon_khongthich.png" />
     <None Include="Resources\Image1.bmp" />
     <None Include="Resources\Eo_circle_teal_heart.svg.png" />
