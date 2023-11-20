@@ -22,6 +22,7 @@ namespace UngDungHenHo.UserControls
         private Button[] buttons = new Button[4]; // Mảng các button
         private int currentButtonIndex = 0; // Chỉ số hiện tại của button được xử lý
 
+
         public UCProfile(int iddangnhap)
         {
             InitializeComponent();
@@ -147,6 +148,12 @@ namespace UngDungHenHo.UserControls
                 }
             }
         }
+
+        private void UCProfile_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
 

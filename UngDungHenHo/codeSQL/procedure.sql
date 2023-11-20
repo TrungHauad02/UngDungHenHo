@@ -67,4 +67,36 @@ BEGIN
 END;
 go
 
+CREATE PROC [dbo].[CapNhatBaoCao]
+    @ID_BaoCao INT,
+    @ID_QuanTri INT,
+    @ThoiGianPhanHoi DATETIME,
+    @NoiDungPhanHoi NVARCHAR(255)
+AS
+BEGIN
+    UPDATE BAOCAO
+    SET
+        ID_QuanTri = @ID_QuanTri,
+        ThoiGianPhanHoi = @ThoiGianPhanHoi,
+        NoiDungPhanHoi = @NoiDungPhanHoi
+    WHERE
+        ID_BaoCao = @ID_BaoCao;
+END;
+go
+
+CREATE PROCEDURE [dbo].[ChanNguoiDung]
+AS
+BEGIN
+    UPDATE NGUOIDUNG
+    SET TrangThai = 0
+    WHERE ID_NguoiDung IN (
+        SELECT ID_NguoiDungBiBaoCao
+        FROM BAOCAO
+        GROUP BY ID_NguoiDungBiBaoCao
+        HAVING COUNT(ID_BaoCao) >= 5
+    );
+END;
+GO
+
+
 

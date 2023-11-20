@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,8 +90,8 @@
     <Compile Include="BS layer\BLHome.cs" />
     <Compile Include="BS layer\BLLogin.cs" />
     <Compile Include="BS layer\BLProfile.cs" />
-    <Compile Include="BS layer\BLSearch.cs" />
     <Compile Include="BS layer\BLReport.cs" />
+    <Compile Include="BS layer\BLSearch.cs" />
     <Compile Include="BS layer\BLSignIn.cs" />
     <Compile Include="Custom_Control\PicTureBox_Custom.cs">
       <SubType>Component</SubType>
@@ -88,16 +103,17 @@
     <Compile Include="Forms\FKqTimKiem.Designer.cs">
       <DependentUpon>FKqTimKiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormBlock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormBlock.Designer.cs">
-      <DependentUpon>FormBlock.cs</DependentUpon>
     <Compile Include="Forms\FormBaoCaoNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormBaoCaoNguoiDung.Designer.cs">
       <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBlock.Designer.cs">
+      <DependentUpon>FormBlock.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormForgetpassword.cs">
       <SubType>Form</SubType>
@@ -129,6 +145,7 @@
     <Compile Include="Forms\FormSignIn.Designer.cs">
       <DependentUpon>FormSignIn.cs</DependentUpon>
     </Compile>
+
     <Compile Include="UserControls\UCProfile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +158,7 @@
     <Compile Include="UserControls\UCSearch.Designer.cs">
       <DependentUpon>UCSearch.cs</DependentUpon>
     </Compile>
+
     <Compile Include="models\NguoiDung.cs" />
     <Compile Include="models\TaiKhoan.cs" />
     <Compile Include="models\TinNhan.cs" />
@@ -159,13 +177,22 @@
     <Compile Include="UserControls\UCHome.Designer.cs">
       <DependentUpon>UCHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCProfile.Designer.cs" />
+    <Compile Include="UserControls\UCSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCSearch.Designer.cs" />
     <EmbeddedResource Include="Forms\FKqTimKiem.resx">
       <DependentUpon>FKqTimKiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormBlock.resx">
-      <DependentUpon>FormBlock.cs</DependentUpon>
     <EmbeddedResource Include="Forms\FormBaoCaoNguoiDung.resx">
       <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormBlock.resx">
+      <DependentUpon>FormBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormForgetpassword.resx">
       <DependentUpon>FormForgetpassword.cs</DependentUpon>
@@ -182,12 +209,14 @@
     <EmbeddedResource Include="Forms\FormSignIn.resx">
       <DependentUpon>FormSignIn.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="UserControls\UCProfile.resx">
       <DependentUpon>UCProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCSearch.resx">
       <DependentUpon>UCSearch.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -204,11 +233,8 @@
     <EmbeddedResource Include="UserControls\UCHome.resx">
       <DependentUpon>UCHome.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\FontAwesome.otf" />
+    <EmbeddedResource Include="UserControls\UCProfile.resx" />
+    <EmbeddedResource Include="UserControls\UCSearch.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -223,7 +249,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="codeSQL\create.sql" />
     <Content Include="codeSQL\data.sql" />
@@ -232,9 +269,6 @@
     <Content Include="codeSQL\procedure.sql" />
     <Content Include="codeSQL\trigger.sql" />
     <Content Include="codeSQL\view.sql" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <None Include="Picture\anhnguoidungkhongco.png" />
     <None Include="Picture\icon_khongthich.png" />
     <None Include="Resources\Image1.bmp" />
