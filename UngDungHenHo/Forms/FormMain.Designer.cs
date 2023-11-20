@@ -221,7 +221,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(180)))), ((int)(((byte)(219)))));
-            this.ClientSize = new System.Drawing.Size(1712, 911);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.pnlMain);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

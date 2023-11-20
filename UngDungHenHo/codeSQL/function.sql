@@ -46,8 +46,26 @@ RETURN
     FROM BaiViet
     WHERE ID_NguoiDung = @IdNguoiDung
 );
+go
+create function func_Laydanhsachsothichcuanguoidung
+(
+	@IdNguoiDung int
+)
+	returns table
+as
+return(
 
+	
+	select SOTHICH.TenSoThich
+	from SOTHICH
+	inner join 
+	(select ID_SoThich
+	from SOTHICH_NGUOIDUNG
+	where SOTHICH_NGUOIDUNG.ID_NguoiDung = @IdNguoiDung) as danhsach
+	on danhsach.ID_SoThich = SOTHICH.ID_SoThich
 
+);
+go
 
 
 

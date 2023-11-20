@@ -54,6 +54,17 @@ BEGIN
     INSERT INTO THICHNGUOIDUNG (ID_NguoiThich, ID_NguoiDuocThich)
     VALUES (@IdNguoithich, @IdNguoiDuocthich);
 END;
-
+go
+create PROCEDURE Proc_TaoBaoCaoNguoiDung
+    @ID_NguoiDungBaoCao INT,
+    @ID_NguoiDungBiBaoCao INT,
+	@ThoiGianBaoCao date,
+	@NoiDungBaoCao nvarchar(200)
+AS
+BEGIN
+    INSERT INTO BAOCAO(ID_NguoiDungBaoCao,ID_NguoiDungBiBaoCao,ThoiGianBaoCao,NoiDungBaoCao)
+    VALUES (@ID_NguoiDungBaoCao, @ID_NguoiDungBiBaoCao,	@ThoiGianBaoCao ,@NoiDungBaoCao);
+END;
+go
 
 
