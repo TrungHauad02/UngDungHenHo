@@ -17,17 +17,18 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCProfile : UserControl
     {
-        int idDangNhap = 1;
+        int idDangNhap;
         BLProfile blProfile = new BLProfile();
         private Button[] buttons = new Button[4]; // Mảng các button
         private int currentButtonIndex = 0; // Chỉ số hiện tại của button được xử lý
 
-        public UCProfile()
+        public UCProfile(int iddangnhap)
         {
             InitializeComponent();
             buttons = new Button[] { button1, button2, button3, button4 };
-            LoadNguoiDung(1);
-            LoadGhepDoiButtons(1); // Thay thế 1 bằng ID_NguoiDung1 thực tế của bạn
+            this.idDangNhap = iddangnhap;
+            LoadNguoiDung(idDangNhap);
+            LoadGhepDoiButtons(idDangNhap); // Thay thế 1 bằng ID_NguoiDung1 thực tế của bạn
         }
 
         public void LoadNguoiDung(int nguoiDungId)
@@ -145,11 +146,6 @@ namespace UngDungHenHo.UserControls
                     button.Visible = false;
                 }
             }
-        }
-
-        private void UCProfile_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

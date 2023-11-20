@@ -238,7 +238,6 @@
             this.Controls.Add(this.panel3);
             this.Name = "UCProfile";
             this.Size = new System.Drawing.Size(1015, 784);
-            this.Load += new System.EventHandler(this.UCProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.grBaiViet.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

@@ -86,7 +86,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            this.pnlBody.Controls.Add(new UCProfile());
+            this.pnlBody.Controls.Add(new UCProfile(FormMain.account.Id));
         }
         private void ChangeStatehover(object sender, bool state, Color currColor)
         {
