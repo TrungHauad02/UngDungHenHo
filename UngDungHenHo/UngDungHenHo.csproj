@@ -69,6 +69,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BS layer\BLBaoCaoNguoiDung.cs" />
     <Compile Include="BS layer\BLChatting.cs" />
     <Compile Include="BS layer\BLForgetpass.cs" />
     <Compile Include="BS layer\BLHome.cs" />
