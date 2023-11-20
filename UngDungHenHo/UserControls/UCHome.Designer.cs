@@ -33,19 +33,21 @@
             // 
             // pnlListNguoiDungs
             // 
-            this.pnlListNguoiDungs.Location = new System.Drawing.Point(3, 3);
+            this.pnlListNguoiDungs.Location = new System.Drawing.Point(0, 0);
+            this.pnlListNguoiDungs.Margin = new System.Windows.Forms.Padding(4);
             this.pnlListNguoiDungs.Name = "pnlListNguoiDungs";
-            this.pnlListNguoiDungs.Size = new System.Drawing.Size(936, 571);
+            this.pnlListNguoiDungs.Size = new System.Drawing.Size(1015, 784);
             this.pnlListNguoiDungs.TabIndex = 0;
             this.pnlListNguoiDungs.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlListNguoiDungs_Paint);
             // 
             // UCHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlListNguoiDungs);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCHome";
-            this.Size = new System.Drawing.Size(956, 593);
+            this.Size = new System.Drawing.Size(1015, 784);
             this.Load += new System.EventHandler(this.UCHome_Load);
             this.ResumeLayout(false);
 
