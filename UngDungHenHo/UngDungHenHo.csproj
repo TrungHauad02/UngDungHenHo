@@ -76,6 +76,7 @@
     <Compile Include="BS layer\BLLogin.cs" />
     <Compile Include="BS layer\BLProfile.cs" />
     <Compile Include="BS layer\BLSearch.cs" />
+    <Compile Include="BS layer\BLReport.cs" />
     <Compile Include="BS layer\BLSignIn.cs" />
     <Compile Include="Custom_Control\PicTureBox_Custom.cs">
       <SubType>Component</SubType>
@@ -87,6 +88,11 @@
     <Compile Include="Forms\FKqTimKiem.Designer.cs">
       <DependentUpon>FKqTimKiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBlock.Designer.cs">
+      <DependentUpon>FormBlock.cs</DependentUpon>
     <Compile Include="Forms\FormBaoCaoNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </Compile>
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormSignIn.cs">
       <SubType>Form</SubType>
@@ -150,6 +162,8 @@
     <EmbeddedResource Include="Forms\FKqTimKiem.resx">
       <DependentUpon>FKqTimKiem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormBlock.resx">
+      <DependentUpon>FormBlock.cs</DependentUpon>
     <EmbeddedResource Include="Forms\FormBaoCaoNguoiDung.resx">
       <DependentUpon>FormBaoCaoNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSignIn.resx">
       <DependentUpon>FormSignIn.cs</DependentUpon>

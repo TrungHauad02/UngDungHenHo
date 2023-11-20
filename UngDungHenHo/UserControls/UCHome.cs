@@ -19,7 +19,7 @@ namespace UngDungHenHo.UserControls
 {
     public partial class UCHome : UserControl
     {
-        int panelSize = 500;
+        int panelSize = 700;
         Panel[] panels;
         Label[] lbHoTens;
         Label[] lbBaoCaos;
@@ -35,7 +35,6 @@ namespace UngDungHenHo.UserControls
         {
             InitializeComponent();
 
-            pnlListNguoiDungs.Size = new Size(1000, 1000);
             pnlListNguoiDungs.BackColor = Color.WhiteSmoke;
 
 
@@ -86,14 +85,10 @@ namespace UngDungHenHo.UserControls
                 panels[i] = new Panel();
                 panels[i].AutoScroll = true;
                 AddScrollBar(panels[i]);
-                panels[i].BackColor = Color.Red;
+          
 
                 panels[i].Size = new Size(panelSize, panelSize);
-
-                panels[i].Location = new Point(150, 150);
-
-
-
+                panels[i].Location = new Point((pnlListNguoiDungs.Size.Width - panelSize) / 2, 0);
                 string stsothich = "Sở Thích: \n \n";
 
                 dtSoThich = dbHome.LayDanhSoThichNguoiDung(Convert.ToInt32(dtND.Rows[i][0]));
@@ -241,6 +236,7 @@ namespace UngDungHenHo.UserControls
                     pcboxthichs[tag].Location = new Point(TamPanel(panels[tag]).X + 50, TamPanel(panels[tag]).Y + 100);
                     pcboxkhongthichs[tag].Location = new Point(TamPanel(panels[tag]).X - 50, TamPanel(panels[tag]).Y + 100);
 
+
                 }
             }
 
@@ -260,8 +256,8 @@ namespace UngDungHenHo.UserControls
                 Point mousePosition = new Point(X, Y);
 
 
-                if (mousePosition.X >= 0 && mousePosition.X <= panels[tag + 1].Width &&
-  mousePosition.Y >= 0 && mousePosition.Y <= panels[tag + 1].Height)
+                if (mousePosition.X >= 0 && mousePosition.X <= panels[tag].Width &&
+  mousePosition.Y >= 0 && mousePosition.Y <= panels[tag].Height)
                 {
                     panels[tag].Location = new Point(pointtemp.X, pointtemp.Y);
                     lbHoTens[tag].Location = new Point(panels[tag].Left, panels[tag].Top);
@@ -282,7 +278,7 @@ namespace UngDungHenHo.UserControls
                         taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                         taothichvakhongthich(panels[tag + 2], tag + 2);
                         pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-
+                        taothichvakhongthich(panels[tag + 2], tag + 2);
 
                     }
                 }
@@ -402,8 +398,6 @@ namespace UngDungHenHo.UserControls
                     taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                     taothichvakhongthich(panels[tag + 2], tag + 2);
                     pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-
-
                 }
             }
         }
