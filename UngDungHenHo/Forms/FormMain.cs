@@ -24,7 +24,7 @@ namespace UngDungHenHo
             InitializeComponent();
             FormLogin formLogin = new FormLogin();
             this.Visible = false;
-            if(FormMain.account == null || FormMain.account.Id == -1)
+            while(FormMain.account == null || FormMain.account.Id == -1)
                 formLogin.ShowDialog();
             this.Visible = true;
         }

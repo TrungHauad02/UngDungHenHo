@@ -148,14 +148,14 @@
             this.lblLogin.TabIndex = 9;
             this.lblLogin.Text = "LOGIN";
             // 
-            // lblErrorUsername
+            // lblUsernameError
             // 
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.BackColor = System.Drawing.Color.White;
             this.lblUsernameError.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
             this.lblUsernameError.Location = new System.Drawing.Point(290, 474);
-            this.lblUsernameError.Name = "lblErrorUsername";
+            this.lblUsernameError.Name = "lblUsernameError";
             this.lblUsernameError.Size = new System.Drawing.Size(186, 35);
             this.lblUsernameError.TabIndex = 21;
             this.lblUsernameError.Text = "Error username";
@@ -180,6 +180,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(997, 737);
+            this.ControlBox = false;
             this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.lblUsernameError);
             this.Controls.Add(this.lblSignIn);
