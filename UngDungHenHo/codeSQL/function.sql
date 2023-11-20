@@ -67,8 +67,78 @@ return(
 );
 go
 
+CREATE FUNCTION dbo.GetNguoiDungInfoById
+(
+    @NguoiDungId INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [HoTen], [NgaySinh], [AnhDaiDien], [MoTaCaNhan]
+    FROM [NHANTINHENHO].[dbo].[NGUOIDUNG]
+    WHERE [ID_NguoiDung] = @NguoiDungId
+);
+go
+CREATE FUNCTION dbo.GetSoThichByNguoiDung
+(
+    @NguoiDungId INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [s].[ID_SoThich], [s].[TenSoThich]
+    FROM [NHANTINHENHO].[dbo].[SOTHICH] AS [s]
+    JOIN [NHANTINHENHO].[dbo].[SOTHICH_NGUOIDUNG] AS [snd]
+    ON [s].[ID_SoThich] = [snd].[ID_SoThich]
+    WHERE [snd].[ID_NguoiDung] = @NguoiDungId
+);
+go
+CREATE FUNCTION dbo.GetBaiVietByNguoiDungId
+(
+    @NguoiDungId INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [NoiDung], [HinhAnh], [ThoiGianDang]
+    FROM (
+        SELECT [NoiDung], [HinhAnh], [ThoiGianDang],
+               ROW_NUMBER() OVER (ORDER BY [ThoiGianDang] DESC) AS RowNum
+        FROM [NHANTINHENHO].[dbo].[BAIVIET]
+        WHERE [ID_NguoiDung] = @NguoiDungId
+    ) AS Subquery
+    WHERE RowNum BETWEEN 1 AND 1000
+);
+go
+CREATE FUNCTION dbo.GetInfoByNguoiDung1
+(
+    @NguoiDung1 INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [ng].[HoTen], [gd].[ID_NguoiDung2]
+    FROM [NHANTINHENHO].[dbo].[GHEPDOI] AS [gd]
+    INNER JOIN [NHANTINHENHO].[dbo].[NGUOIDUNG] AS [ng] ON [gd].[ID_NguoiDung2] = [ng].[ID_NguoiDung]
+    WHERE [gd].[ID_NguoiDung1] = @NguoiDung1
+);
+go
 
-
-
-
+CREATE FUNCTION dbo.GetNguoiDungById_DangNhap
+(
+    @ID_DangNhap INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT [ID_NguoiDung], [HoTen], [NgaySinh], [AnhDaiDien], [MoTaCaNhan]
+    FROM [NHANTINHENHO].[dbo].[NGUOIDUNG]
+    WHERE [ID_DangNhap] = @ID_DangNhap
+);
+go
 

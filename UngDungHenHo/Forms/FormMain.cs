@@ -63,6 +63,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCSearch());
         }
 
         private void btnUser_Click(object sender, EventArgs e)
@@ -85,6 +86,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
+            this.pnlBody.Controls.Add(new UCProfile());
         }
         private void ChangeStatehover(object sender, bool state, Color currColor)
         {
