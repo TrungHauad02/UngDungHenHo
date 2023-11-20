@@ -35,6 +35,16 @@ namespace UngDungHenHo.BS_layer
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable LayDanhSoThichNguoiDung(int IDNguoiDung)
+        {
+            SqlCommand cmd = new SqlCommand("select  * from dbo.func_Laydanhsachsothichcuanguoidung(@IDNguoiDung)", db.OpenConnect());
+            cmd.Parameters.AddWithValue("@IDNguoiDung", IDNguoiDung);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
         public void ThemNguoiDungThich(int IdNguoithich, int IdNguoiDuocthich)
         {
 
