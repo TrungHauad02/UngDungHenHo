@@ -14,6 +14,7 @@ using UngDungHenHo.BS_layer;
 using UngDungHenHo.models;
 using UngDungHenHo.Custom_Control;
 using UngDungHenHo.Forms;
+using System.Reflection;
 
 namespace UngDungHenHo.UserControls
 {
@@ -31,12 +32,13 @@ namespace UngDungHenHo.UserControls
         Point pointtemp;
         BLHome dbHome = null;
         DataTable dtND = null;
-        public UCHome()
+        int IDNguoiDung;
+        public UCHome(int IDNguoiDung)
         {
             InitializeComponent();
 
             pnlListNguoiDungs.BackColor = Color.WhiteSmoke;
-
+            this.IDNguoiDung = IDNguoiDung;
 
             listnguoidung();
 
@@ -70,7 +72,7 @@ namespace UngDungHenHo.UserControls
         {
 
             dbHome = new BLHome();
-            dtND = dbHome.LayDanhSachNguoiDung();
+            dtND = dbHome.LayDanhSachNguoiDungChuaThich(this.IDNguoiDung);
             int tongnguoidung = dtND.Rows.Count;
             panels = new Panel[tongnguoidung];
             lbHoTens = new Label[tongnguoidung];
@@ -144,8 +146,7 @@ namespace UngDungHenHo.UserControls
 
                 pnlbaiviet[i] = new Panel();
                 pnlbaiviet[i].Size = pnlNguoiDung.Size;
-                pnlbaiviet[i].BackColor = Color.Yellow;
-
+          
                 PictureBox picPhim = new PictureBox();
                 object rawValue = dtBaiVietNguoiDung.Rows[i][2];
                 if (rawValue != DBNull.Value)
@@ -267,7 +268,11 @@ namespace UngDungHenHo.UserControls
                 }
                 else
                 {
-                    pnlListNguoiDungs.Controls.Remove(panels[tag]);
+                    if(panels[tag].Location.X > pointtemp.X)
+                    {
+                        dbHome.ThemNguoiDungThich(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]));
+                    }
+                     pnlListNguoiDungs.Controls.Remove(panels[tag]);
                     pnlListNguoiDungs.Controls.Remove(lbHoTens[tag]);
                     pnlListNguoiDungs.Controls.Remove(lbBaoCaos[tag]);
                     pnlListNguoiDungs.Controls.Remove(pcboxthichs[tag]);
@@ -278,7 +283,7 @@ namespace UngDungHenHo.UserControls
                         taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                         taothichvakhongthich(panels[tag + 2], tag + 2);
                         pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-                        taothichvakhongthich(panels[tag + 2], tag + 2);
+                      
 
                     }
                 }
@@ -324,7 +329,7 @@ namespace UngDungHenHo.UserControls
         private void LabelThichClickHandler(object sender, EventArgs e)
         {
             int tag = int.Parse((sender as Label).Tag.ToString());
-            FormBaoCaoNguoiDung newBaoCaoNguoiDung = new FormBaoCaoNguoiDung(1, Convert.ToInt32(dtND.Rows[tag][0]), dtND.Rows[tag][1].ToString());
+            FormBaoCaoNguoiDung newBaoCaoNguoiDung = new FormBaoCaoNguoiDung(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]), dtND.Rows[tag][1].ToString());
             newBaoCaoNguoiDung.ShowDialog();
         }
 
@@ -363,7 +368,7 @@ namespace UngDungHenHo.UserControls
 
             if (tag != -1)
             {
-                dbHome.ThemNguoiDungThich(1, Convert.ToInt32(dtND.Rows[tag][0]));
+                dbHome.ThemNguoiDungThich(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]));
 
                 pnlListNguoiDungs.Controls.Remove(panels[tag]);
                 pnlListNguoiDungs.Controls.Remove(lbHoTens[tag]);

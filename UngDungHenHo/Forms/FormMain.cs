@@ -50,7 +50,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            this.pnlBody.Controls.Add(new UCHome());
+            this.pnlBody.Controls.Add(new UCHome(FormMain.account.Id));
         }
         private void btnChatting_Click(object sender, EventArgs e)
         {

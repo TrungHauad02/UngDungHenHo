@@ -16,15 +16,16 @@ namespace UngDungHenHo.BS_layer
      
         public DBMain db = new DBMain();
         public BLHome() { }
-        public DataTable LayDanhSachNguoiDung()
+        public DataTable LayDanhSachNguoiDungChuaThich(int IDNguoiDung)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM V_NguoiDung", db.OpenConnect());
+            SqlCommand cmd = new SqlCommand("select  * from dbo.func_Laydanhsachnguoidungchuathich(@IdNguoiDung)", db.OpenConnect());
+            cmd.Parameters.AddWithValue("@IdNguoiDung", IDNguoiDung);
+
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             return dataTable;
         }
-
         public DataTable LayDanhSachBaiVietNguoiDung(int IDNguoiDung)
         {
             SqlCommand cmd = new SqlCommand("select  * from dbo.func_LayDanhSachBaiVietNguoiDung(@IDNguoiDung)", db.OpenConnect());
