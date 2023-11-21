@@ -46,6 +46,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grBaiViet.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -164,6 +165,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.lbTenTuoi);
             this.panel2.Controls.Add(this.pbAnhDaiDien);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -227,6 +229,17 @@
             this.panel3.Size = new System.Drawing.Size(504, 244);
             this.panel3.TabIndex = 25;
             // 
+            // btnSua
+            // 
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Location = new System.Drawing.Point(942, 3);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(68, 54);
+            this.btnSua.TabIndex = 3;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // UCProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,9 +251,7 @@
             this.Controls.Add(this.panel3);
             this.Name = "UCProfile";
             this.Size = new System.Drawing.Size(1015, 784);
-
             this.Load += new System.EventHandler(this.UCProfile_Load);
-
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.grBaiViet.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -271,5 +282,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSua;
     }
 }
