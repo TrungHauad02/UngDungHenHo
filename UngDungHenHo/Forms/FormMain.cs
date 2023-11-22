@@ -25,13 +25,16 @@ namespace UngDungHenHo
             FormLogin formLogin = new FormLogin();
             this.Visible = false;
             formLogin.ShowDialog();
-            this.Visible = true;
-            if(account.Role == "admin")
+            if (!formLogin.IsDisposed)
             {
-                FormReport report = new FormReport();
-                this.Visible = false;
-                report.ShowDialog();
                 this.Visible = true;
+                if (account.Role == "admin")
+                {
+                    FormReport report = new FormReport();
+                    this.Visible = false;
+                    report.ShowDialog();
+                    this.Visible = true;
+                }
             }
         }
 
