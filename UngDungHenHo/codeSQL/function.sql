@@ -196,3 +196,15 @@ begin
     RETURN @ReportCount;
 END;
 go
+
+CREATE FUNCTION [dbo].[GetRoleByIDDangNhap](@ID_DangNhap INT)
+RETURNS VARCHAR(10)
+AS
+BEGIN
+    declare @Role VARCHAR(10);
+    SELECT @Role = PhanQuyen
+    FROM dbo.THONGTINDANGNHAP
+    WHERE ID_DangNhap = @ID_DangNhap;
+    RETURN @Role;
+END;
+GO

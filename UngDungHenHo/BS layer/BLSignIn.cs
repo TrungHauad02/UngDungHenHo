@@ -17,10 +17,9 @@ namespace UngDungHenHo.BS_layer
 
         public BLSignIn() { dbMain = new DBMain(); }
 
-        public TaiKhoan TrySignIn(NguoiDung nguoiDung)
+        public TaiKhoan TrySignIn(NguoiDung nguoiDung, ref string error)
         {
             TaiKhoan acc = new TaiKhoan();
-            string error = String.Empty;
             string procName = "dbo.TrySignIn";
             SqlConnection conn = dbMain.OpenConnect();
             dbMain.Comm = new SqlCommand(procName, conn);

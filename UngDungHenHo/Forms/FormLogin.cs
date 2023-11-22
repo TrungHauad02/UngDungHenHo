@@ -43,6 +43,11 @@ namespace UngDungHenHo.Forms
             FormMain.account = bLLogin.TryLogin(account);
             if (FormMain.account.Id != -1)
             {
+                BLReport bLReport = new BLReport();
+                if(!bLReport.LayTrangThaiND(FormMain.account.Id))
+                {
+                    MessageBox.Show("You are banned", "Login fail");
+                }
                 MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
                 this.Close();
             }
