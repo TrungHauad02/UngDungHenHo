@@ -171,4 +171,28 @@ and ID_NguoiDung <> @IdNguoiDung
 );
 GO
 
+create function [dbo].[DSTaiKhoanBiChan]()
+returns table
+as 
+return 
+(
+	select 
+		ID_NguoiDungBiBaoCao as ID_NguoiDung, 
+		count (*) as SoLuong
+	from BAOCAO
+	group by ID_NguoiDungBiBaoCao
+	having count (*) >= 5
+)
+go
 
+create function [dbo].[func_TinhSoLuongBaoCao]()
+returns int
+as
+begin
+    declare @ReportCount INT;
+
+    SELECT @ReportCount = COUNT(*) FROM BAOCAO group by ID_NguoiDung;
+
+    RETURN @ReportCount;
+END;
+go

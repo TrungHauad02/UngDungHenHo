@@ -25,9 +25,7 @@ namespace UngDungHenHo.UserControls
         {
             InitializeComponent();
         }
-        private DataView dvTimKiem;
         private DataTable dtTimKiem;
-        private SqlConnection conn;
         public int index;
         public Panel TaoKetQuaTimKiem(NguoiDung a, byte[] image, int vitri)
         {
@@ -110,7 +108,6 @@ namespace UngDungHenHo.UserControls
             }
             catch (SqlException ex)
             {
-                // Nếu mã đơn hàng không tồn tại, hiển thị thông báo lỗi
                 MessageBox.Show(ex.Message);
             }
         }

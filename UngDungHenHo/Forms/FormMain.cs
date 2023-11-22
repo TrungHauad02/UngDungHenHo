@@ -24,7 +24,7 @@ namespace UngDungHenHo
             InitializeComponent();
             FormLogin formLogin = new FormLogin();
             this.Visible = false;
-            if(FormMain.account == null || FormMain.account.Id == -1)
+            while(FormMain.account == null || FormMain.account.Id == -1)
                 formLogin.ShowDialog();
             this.Visible = true;
         }
@@ -86,7 +86,7 @@ namespace UngDungHenHo
         {
             SetSelected(sender);
             this.pnlBody.Controls.Clear();
-            this.pnlBody.Controls.Add(new UCProfile());
+            this.pnlBody.Controls.Add(new UCProfile(FormMain.account.Id));
         }
         private void ChangeStatehover(object sender, bool state, Color currColor)
         {

@@ -1,3 +1,8 @@
-create View V_NguoiDung
-as
-select * from NguoiDung
+use NHANTINHENHO
+go
+
+create view [dbo].[v_BaoCao] 
+as 
+select * 
+from BAOCAO
+
