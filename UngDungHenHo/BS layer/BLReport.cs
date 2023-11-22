@@ -59,5 +59,27 @@ namespace UngDungHenHo.BS_layer
             DataTable dt = dbMain.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
             return dt.Rows[0]["TrangThai"].ToString() == "1";
         }
+
+        public string NDBaoCao(int id_nguoiDung)
+        {
+            string noiDungBaoCao = string.Empty;
+            SqlCommand command = new SqlCommand("SELECT NoiDungBaoCao FROM BAOCAO WHERE ID_NguoiDungBiBaoCao = @ID_NguoiDungBiBaoCao", dbMain.OpenConnect());
+            command.Parameters.AddWithValue("@ID_NguoiDungBiBaoCao", id_nguoiDung);
+            // Thực hiện truy vấn
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Kiểm tra xem có dữ liệu hay không
+            if (reader.HasRows)
+            {
+                // Đọc dữ liệu từ SqlDataReader
+                while (reader.Read())
+                {
+                    // Lấy giá trị từ cột "NoiDungBaoCao"
+                    noiDungBaoCao = reader["NoiDungBaoCao"].ToString();
+                }
+                reader.Close();
+            }
+            return noiDungBaoCao;
+        }
     }
 }

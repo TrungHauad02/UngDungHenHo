@@ -46,10 +46,10 @@ namespace UngDungHenHo.Forms
                 BLReport bLReport = new BLReport();
                 if(!bLReport.LayTrangThaiND(FormMain.account.Id))
                 {
-                    MessageBox.Show("You are banned", "Login fail");
+                    MessageBox.Show("You are banned" + " because " + bLReport.NDBaoCao(FormMain.account.Id), "Login fail");
                 }
-                MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
-                this.Close();
+                //MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
+                //this.Close();
             }
             else
             {
