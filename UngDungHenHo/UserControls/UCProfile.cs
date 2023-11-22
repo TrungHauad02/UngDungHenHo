@@ -156,7 +156,9 @@ namespace UngDungHenHo.UserControls
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
+            FormSuaProfile formSuaProfile = new FormSuaProfile(idDangNhap);
+            formSuaProfile.ShowDialog();
+            LoadNguoiDung(idDangNhap);
         }
     }
 }
