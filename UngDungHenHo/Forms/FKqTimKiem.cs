@@ -15,21 +15,21 @@ namespace UngDungHenHo.Forms
     public partial class FKqTimKiem : Form
     {
         BLSearch BLSearch = new BLSearch();
-        public FKqTimKiem(int idDangNhap)
+        public FKqTimKiem(int idNguoiDung)
         {
             InitializeComponent();
             buttons = new Button[] { button1, button2, button3, button4 };
-            int nguoiDungId = ChuyenID(idDangNhap);
+            int nguoiDungId = idNguoiDung;
             LoadNguoiDung(nguoiDungId);
             LoadGhepDoiButtons(nguoiDungId); // Thay thế 1 bằng ID_NguoiDung1 thực tế của bạn
         }
-        public int ChuyenID(int idDangNhap)
+/*        public int ChuyenID(int idNguoiDung)
         {
-            DataTable NguoiDung = BLSearch.GetNguoiDungInfoById(idDangNhap);
+            DataTable NguoiDung = BLSearch.GetNguoiDungInfoById(idNguoiDung);
             DataRow row = NguoiDung.Rows[0];
             int nguoiDungId = int.Parse(row["ID_NguoiDung"].ToString());
             return nguoiDungId;
-        }
+        }*/
 
         BLProfile blProfile = new BLProfile();
         private Button[] buttons = new Button[4]; // Mảng các button
