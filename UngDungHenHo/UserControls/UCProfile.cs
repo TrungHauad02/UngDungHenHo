@@ -59,7 +59,7 @@ namespace UngDungHenHo.UserControls
                 }
                 else
                 {
-                    // Xử lý khi không có hình ảnh
+                    pbAnhDaiDien.Image = UngDungHenHo.Properties.Resources.anhnguoidungkhongco;
                 }
             }
             else
@@ -154,6 +154,12 @@ namespace UngDungHenHo.UserControls
 
         }
 
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            FormSuaProfile formSuaProfile = new FormSuaProfile(idDangNhap);
+            formSuaProfile.ShowDialog();
+            LoadNguoiDung(idDangNhap);
+        }
     }
 }
 

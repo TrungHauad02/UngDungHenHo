@@ -97,6 +97,25 @@ BEGIN
     );
 END;
 GO
+CREATE PROCEDURE UpdateNguoiDung
+    @ID_NguoiDung INT,
+    @HoTen NVARCHAR(MAX),
+    @NgaySinh DATE,
+    @AnhDaiDien VARBINARY(MAX),
+    @MoTaCaNhan NVARCHAR(MAX)
+AS
+BEGIN
+    UPDATE [NHANTINHENHO].[dbo].[NGUOIDUNG]
+    SET 
+        [HoTen] = @HoTen,
+        [NgaySinh] = @NgaySinh,
+        [AnhDaiDien] = @AnhDaiDien,
+        [MoTaCaNhan] = @MoTaCaNhan
+    WHERE 
+        [ID_NguoiDung] = @ID_NguoiDung;
+END;
+go
+
 
 
 
