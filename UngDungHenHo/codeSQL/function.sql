@@ -142,6 +142,35 @@ RETURN
 );
 go
 
+create FUNCTION func_Laydanhsachnguoidungchuathich
+(
+    @IdNguoiDung INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+   SELECT ID_NguoiDung,Hoten,AnhDaiDien,MoTaCaNhan
+
+FROM V_NguoiDung
+
+WHERE ID_NguoiDung not in
+(
+
+    SELECT ID_NguoiDuocThich
+    FROM THICHNGUOIDUNG
+    WHERE @IdNguoiDung = ID_NguoiThich
+)
+and  ID_NguoiDung not in 
+(
+	SELECT ID_NguoiDungBiBaoCao
+    FROM BAOCAO
+    WHERE @IdNguoiDung = ID_NguoiDungBaoCao
+)
+and ID_NguoiDung <> @IdNguoiDung
+);
+GO
+
 create function [dbo].[DSTaiKhoanBiChan]()
 returns table
 as 

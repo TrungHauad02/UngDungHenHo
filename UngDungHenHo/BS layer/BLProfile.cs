@@ -41,5 +41,31 @@ namespace UngDungHenHo.BS_layer
             string error = String.Empty;
             return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
         }
+        public void UpdateInfoNguoiDung(int nguoiDungID, string hoTen, DateTime ngaySinh, byte[] anhDaiDien, string moTaCaNhan)
+        {
+            string procName = "dbo.UpdateNguoiDung";
+
+            try
+            {
+                using (SqlConnection conn = db.OpenConnect())
+                using (SqlCommand cmd = new SqlCommand(procName, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@ID_NguoiDung", nguoiDungID);
+                    cmd.Parameters.AddWithValue("@HoTen", hoTen);
+                    cmd.Parameters.AddWithValue("@NgaySinh", ngaySinh);
+                    cmd.Parameters.AddWithValue("@AnhDaiDien", anhDaiDien);
+                    cmd.Parameters.AddWithValue("@MoTaCaNhan", moTaCaNhan);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                // Handle the exception or log the error
+            }
+        }
     }
 }

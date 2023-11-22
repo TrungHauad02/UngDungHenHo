@@ -14,6 +14,7 @@ using UngDungHenHo.BS_layer;
 using UngDungHenHo.models;
 using UngDungHenHo.Custom_Control;
 using UngDungHenHo.Forms;
+using System.Reflection;
 
 namespace UngDungHenHo.UserControls
 {
@@ -31,12 +32,15 @@ namespace UngDungHenHo.UserControls
         Point pointtemp;
         BLHome dbHome = null;
         DataTable dtND = null;
-        public UCHome()
+        PictureBox[] anhdaidiens;
+        Label[] motabanthans;
+        int IDNguoiDung;
+        public UCHome(int IDNguoiDung)
         {
             InitializeComponent();
 
             pnlListNguoiDungs.BackColor = Color.WhiteSmoke;
-
+            this.IDNguoiDung = IDNguoiDung;
 
             listnguoidung();
 
@@ -67,13 +71,15 @@ namespace UngDungHenHo.UserControls
         {
 
             dbHome = new BLHome();
-            dtND = dbHome.LayDanhSachNguoiDung();
+            dtND = dbHome.LayDanhSachNguoiDungChuaThich(this.IDNguoiDung);
             int tongnguoidung = dtND.Rows.Count;
             panels = new Panel[tongnguoidung];
             lbHoTens = new Label[tongnguoidung];
             lbBaoCaos = new Label[tongnguoidung];
             pcboxthichs = new PictureBox[tongnguoidung];
             pcboxkhongthichs = new PictureBox[tongnguoidung];
+            anhdaidiens = new PictureBox[tongnguoidung];
+            motabanthans = new Label[tongnguoidung];
             Label[] lbSoThich = new Label[tongnguoidung];
             DataTable dtSoThich = new DataTable();
 
@@ -86,7 +92,41 @@ namespace UngDungHenHo.UserControls
 
                 panels[i].Size = new Size(panelSize, panelSize);
                 panels[i].Location = new Point((pnlListNguoiDungs.Size.Width - panelSize) / 2, (pnlListNguoiDungs.Size.Height - panelSize) / 2);
+                anhdaidiens[i] = new PictureBox();
+                motabanthans[i] = new Label();
+
+                object rawValue = dtND.Rows[i][2];
+                dtSoThich = dbHome.LayDanhSoThichNguoiDung(Convert.ToInt32(dtND.Rows[i][0]));
+                motabanthans[i].Text = "Mô tả bản thân: \n \n" + dtND.Rows[i][3].ToString();
+
+
+                if (rawValue != DBNull.Value)
+                {
+                    byte[] HinhAnh = (byte[])rawValue;
+                    using (MemoryStream ms = new MemoryStream(HinhAnh))
+                    {
+                        Image hinhAnh = Image.FromStream(ms);
+                        anhdaidiens[i].Image = hinhAnh;
+                    }
+
+                }
+                else
+                {
+                    anhdaidiens[i].Image = UngDungHenHo.Properties.Resources.anhnguoidungkhongco;
+
+
+                }
+
+                anhdaidiens[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                anhdaidiens[i].Size = panels[i].Size - new Size(0, 100);
+
+                anhdaidiens[i].Location = new Point(0, 0);
+                motabanthans[i].Location = new Point(anhdaidiens[i].Left, anhdaidiens[i].Bottom + 10);
+
+                motabanthans[i].Width = panels[i].Width;
+                motabanthans[i].Height = anhdaidiens[i].Height / 10;
                 string stsothich = "Sở Thích: \n \n";
+
 
                 dtSoThich = dbHome.LayDanhSoThichNguoiDung(Convert.ToInt32(dtND.Rows[i][0]));
                 if (dtSoThich.Rows.Count > 0)
@@ -101,12 +141,18 @@ namespace UngDungHenHo.UserControls
 
                 lbSoThich[i] = new Label();
                 lbSoThich[i].Text = stsothich;
+                lbSoThich[i].Width = panels[i].Width;
+                lbSoThich[i].Height = anhdaidiens[i].Height / 10;
                 themsukien(lbSoThich[i], i);
-                panels[i].Controls.Add(lbSoThich[i]);
+                themsukien(anhdaidiens[i], i);
+                themsukien(motabanthans[i], i);
+                lbSoThich[i].Location = new Point(anhdaidiens[i].Left, motabanthans[i].Bottom + 10);
 
                 themsukien(panels[i], i);
                 listbaiviet(panels[i], Convert.ToInt32(dtND.Rows[i][0]), i, lbSoThich[i]);
-
+                panels[i].Controls.Add(lbSoThich[i]);
+                panels[i].Controls.Add(anhdaidiens[i]);
+                panels[i].Controls.Add(motabanthans[i]);
                 if (i == 0 || i == 1)
                 {
                     taohoten(panels[i], dtND.Rows[i][1].ToString(), i);
@@ -127,12 +173,12 @@ namespace UngDungHenHo.UserControls
 
 
 
+
             for (int i = 0; i < tongbaiviet; i++)
             {
 
                 pnlbaiviet[i] = new Panel();
-                pnlbaiviet[i].Size = pnlNguoiDung.Size;
-                pnlbaiviet[i].BackColor = Color.Yellow;
+                pnlbaiviet[i].Size = pnlNguoiDung.Size - new Size(0, 100);
 
                 PictureBox picPhim = new PictureBox();
                 object rawValue = dtBaiVietNguoiDung.Rows[i][2];
@@ -160,29 +206,23 @@ namespace UngDungHenHo.UserControls
                 lbNoiDung[i] = new Label();
                 lbNoiDung[i].Width = pnlbaiviet[i].Width;
                 lbNoiDung[i].Height = pnlbaiviet[i].Height / 10;
-                lbNoiDung[i].Text = "Mô tả bản thân: \n \n" + dtBaiVietNguoiDung.Rows[i][1].ToString();
+                lbNoiDung[i].Text = "Nội dung: \n \n" + dtBaiVietNguoiDung.Rows[i][1].ToString();
                 themsukien(lbNoiDung[i], i);
 
                 pnlNguoiDung.Controls.Add(lbNoiDung[i]);
 
-
-
-
                 if (i == 0)
                 {
-                    pnlbaiviet[i].Location = new Point(0, 0);
+                    pnlbaiviet[i].Location = new Point(lbSoThich.Left, lbSoThich.Bottom + 40);
 
-                    lbSoThich.Width = pnlbaiviet[i].Width;
-                    lbSoThich.Height = pnlbaiviet[i].Height / 10;
-                    lbSoThich.Location = new Point(pnlbaiviet[i].Left, pnlbaiviet[i].Bottom + 10);
-                    lbNoiDung[i].Location = new Point(pnlbaiviet[i].Left, lbSoThich.Bottom + 10);
 
                 }
                 else
                 {
-                    pnlbaiviet[i].Location = new Point(pnlbaiviet[i - 1].Left, lbNoiDung[i - 1].Bottom + 50);
-                    lbNoiDung[i].Location = new Point(pnlbaiviet[i].Left, pnlbaiviet[i].Bottom + 10);
+                    pnlbaiviet[i].Location = new Point(lbNoiDung[i - 1].Left, lbNoiDung[i - 1].Bottom + 10);
+
                 }
+                lbNoiDung[i].Location = new Point(pnlbaiviet[i].Left, pnlbaiviet[i].Bottom + 10);
 
 
                 themsukien(picPhim, tagnguoidung);
@@ -253,7 +293,11 @@ namespace UngDungHenHo.UserControls
                 }
                 else
                 {
-                    pnlListNguoiDungs.Controls.Remove(panels[tag]);
+                    if(panels[tag].Location.X > pointtemp.X)
+                    {
+                        dbHome.ThemNguoiDungThich(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]));
+                    }
+                     pnlListNguoiDungs.Controls.Remove(panels[tag]);
                     pnlListNguoiDungs.Controls.Remove(lbHoTens[tag]);
                     pnlListNguoiDungs.Controls.Remove(lbBaoCaos[tag]);
                     pnlListNguoiDungs.Controls.Remove(pcboxthichs[tag]);
@@ -264,7 +308,7 @@ namespace UngDungHenHo.UserControls
                         taohoten(panels[tag + 2], dtND.Rows[tag + 2][1].ToString(), tag + 2);
                         taothichvakhongthich(panels[tag + 2], tag + 2);
                         pnlListNguoiDungs.Controls.Add(panels[tag + 2]);
-                        taothichvakhongthich(panels[tag + 2], tag + 2);
+                      
 
                     }
                 }
@@ -287,6 +331,7 @@ namespace UngDungHenHo.UserControls
         {
 
             lbHoTens[i] = new Label();
+
             lbHoTens[i].Text = "tui tên " + HoTen;
             lbHoTens[i].AutoSize = true;
             lbHoTens[i].Location = new Point(pnlNguoiDung.Left, pnlNguoiDung.Top);
@@ -305,7 +350,7 @@ namespace UngDungHenHo.UserControls
         private void LabelThichClickHandler(object sender, EventArgs e)
         {
             int tag = int.Parse((sender as Label).Tag.ToString());
-            FormBaoCaoNguoiDung newBaoCaoNguoiDung = new FormBaoCaoNguoiDung(1, Convert.ToInt32(dtND.Rows[tag][0]), dtND.Rows[tag][1].ToString());
+            FormBaoCaoNguoiDung newBaoCaoNguoiDung = new FormBaoCaoNguoiDung(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]), dtND.Rows[tag][1].ToString());
             newBaoCaoNguoiDung.ShowDialog();
         }
 
@@ -344,7 +389,7 @@ namespace UngDungHenHo.UserControls
 
             if (tag != -1)
             {
-                dbHome.ThemNguoiDungThich(1, Convert.ToInt32(dtND.Rows[tag][0]));
+                dbHome.ThemNguoiDungThich(this.IDNguoiDung, Convert.ToInt32(dtND.Rows[tag][0]));
 
                 pnlListNguoiDungs.Controls.Remove(panels[tag]);
                 pnlListNguoiDungs.Controls.Remove(lbHoTens[tag]);

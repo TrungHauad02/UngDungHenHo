@@ -145,6 +145,12 @@
     <Compile Include="Forms\FormSignIn.Designer.cs">
       <DependentUpon>FormSignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSuaProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSuaProfile.Designer.cs">
+      <DependentUpon>FormSuaProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCProfile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSignIn.resx">
       <DependentUpon>FormSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSuaProfile.resx">
+      <DependentUpon>FormSuaProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCProfile.resx">
       <DependentUpon>UCProfile.cs</DependentUpon>
