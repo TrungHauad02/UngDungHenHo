@@ -232,10 +232,10 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(913, 22);
+            this.btnSua.Location = new System.Drawing.Point(919, 22);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(68, 54);
-            this.btnSua.TabIndex = 4;
+            this.btnSua.TabIndex = 3;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
