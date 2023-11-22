@@ -126,5 +126,33 @@ BEGIN
 END;
 go
 
+CREATE FUNCTION dbo.GetRelatedIDs (@id_select INT)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT  RelatedID
+    FROM
+    (
+        SELECT ID_NguoiDung1 AS RelatedID
+        FROM GHEPDOI
+        WHERE @id_select = ID_NguoiDung2
+        
+        UNION ALL
+        
+        SELECT ID_NguoiDung2 AS RelatedID
+        FROM GHEPDOI
+        WHERE @id_select = ID_NguoiDung1
+    ) AS Subquery
+);
+
+go
+
+
+CREATE PROC layThongTinNguoiChat @MaND INT
+as
+	select ID_NguoiDung,HoTen,AnhDaiDien
+	from GetRelatedIDs(@MaND) rl, NGUOIDUNG ND
+	where rl.RelatedID = ND.ID_NguoiDung
 
 

@@ -78,9 +78,9 @@ namespace UngDungHenHo.UserControls
             }
             
             lbl.AutoSize = true;
-            lbl.Tag=index;
-            pnl.Tag = index;
-            pictureBox.Tag = index;
+            lbl.Tag = Tuple.Create(index, ten, pictureBox.Image);
+            pnl.Tag = Tuple.Create(index, ten, pictureBox.Image);
+            pictureBox.Tag = Tuple.Create(index, ten, pictureBox.Image);
             pnl.Location = loc;
             pnl.BackColor = Color.FromArgb(252, 252, 252);
             lbl.Click += new EventHandler(NguoiDung_Click);
@@ -106,21 +106,25 @@ namespace UngDungHenHo.UserControls
                 thr.Abort();
             }   
             setSelected(sender, Color.FromArgb(173, 173, 173), this.pnlNguoiDungs);
+            Tuple<int, string, Image> tp = null;
             if (sender is Label)
             {
-                this.idNguoiDungSelected = int.Parse((sender as Label).Tag.ToString());
+                tp = (sender as Label).Tag as Tuple<int, string, Image>;
+                this.idNguoiDungSelected = tp.Item1;
             }
             else if (sender is PictureBox) {
-                this.idNguoiDungSelected = int.Parse((sender as PictureBox).Tag.ToString());
+                tp = (sender as PictureBox).Tag as Tuple<int, string, Image>;
+                this.idNguoiDungSelected = tp.Item1;
             }
             else
             {
-                this.idNguoiDungSelected = int.Parse((sender as Panel).Tag.ToString());
+                tp = (sender as Panel).Tag as Tuple<int, string, Image>;
+                this.idNguoiDungSelected = tp.Item1;
             }
             this.pnlChatContent.Controls.Clear();
             
-            this.lblTenNguoiChat.Text = this.listNguoiDungs[this.idNguoiDungSelected].Name.ToString();
-            
+            this.lblTenNguoiChat.Text = tp.Item2.ToString();
+            this.pbAnhNguoiChat.Image = tp.Item3;
             if (timer.Enabled)
             {
                 timer.Stop();
@@ -145,7 +149,7 @@ namespace UngDungHenHo.UserControls
         {
             listNguoiDungs.Clear();
             this.pnlNguoiDungs.Controls.Clear();
-            DataTable dt = blchat.LoadNguoiDung();
+            DataTable dt = blchat.LoadNguoiDung(idDangNhap);
             int index = 0;
             int indexvitri = 0;
             foreach (DataRow dr in dt.Rows)
@@ -153,14 +157,11 @@ namespace UngDungHenHo.UserControls
                 int id =int.Parse(dr["ID_NguoiDung"].ToString());
                 string ten = dr["HoTen"].ToString();
                 NguoiDung nd = new NguoiDung(id, ten);
-                if (index+1 != idDangNhap)
-                {
-                    Panel ndpnl = TaoNguoiDung(index, ten, new Point(0, (89 + 5) * indexvitri), dr["AnhDaiDien"]);
+              
+                    Panel ndpnl = TaoNguoiDung(int.Parse(dr["ID_NguoiDung"].ToString()), ten, new Point(0, (89 + 5) * indexvitri), dr["AnhDaiDien"]);
                     this.pnlNguoiDungs.Controls.Add(ndpnl);
                     indexvitri++;
-                }
                 listNguoiDungs.Add(nd);
-                index++;
             }
             dt.Dispose();
         }
@@ -205,7 +206,7 @@ namespace UngDungHenHo.UserControls
         {
 
             int id_gui = idDangNhap;
-            int id_nhan = this.idNguoiDungSelected + 1;
+            int id_nhan = this.idNguoiDungSelected;
             this.listtinnhans.Clear();
             this.pnlChatContent.Controls.Clear();
             DataTable tingui = blchat.LayNoiDungTinNhan(id_gui, id_nhan);
@@ -260,7 +261,7 @@ namespace UngDungHenHo.UserControls
             string err = "";
             if(noidung.Trim() != "")
             {
-                blchat.ThemTinNhan(idDangNhap, idNguoiDungSelected+1, DateTime.Now, noidung, ref err);
+                blchat.ThemTinNhan(idDangNhap, idNguoiDungSelected, DateTime.Now, noidung, ref err);
             }
             else
             {
