@@ -44,6 +44,7 @@ namespace UngDungHenHo.UserControls
                 Image imageData = Image.FromStream(ms);
                 pictureBox.Image = imageData;
             }
+            pictureBox.Click += new EventHandler(Pic_Click);
             Label lbl = new Label();
             lbl.Text = a.Name;
             lbl.MaximumSize = new Size(400, int.MaxValue);
@@ -52,10 +53,13 @@ namespace UngDungHenHo.UserControls
             lbl.AutoSize = true;
             lbl.Size = textSize;
             lbl.Dock = DockStyle.Right;
+            lbl.Click += new EventHandler(Label_Click);
             panel.Click += new EventHandler(Panel_Click);
+            lbl.Tag = a.Id;
+            pictureBox.Tag = a.Id;
             panel.Controls.Add(pictureBox);
             panel.Controls.Add(lbl);
-            //lbl.Location = new Point(16, 20 * vitri + 20);
+            //pic.Location = new Point(16, 20 * vitri + 20);
             panel.Tag = a.Id;
             return panel;
         }
@@ -64,6 +68,22 @@ namespace UngDungHenHo.UserControls
             // Xử lý sự kiện click tại đây
             Panel panel = sender as Panel;
             index = int.Parse(panel.Tag.ToString());
+            FKqTimKiem form = new FKqTimKiem(index);
+            form.ShowDialog();
+        }
+        private void Label_Click(object sender, EventArgs e)
+        {
+            // Xử lý sự kiện click tại đây
+            Label lbl = sender as Label;
+            index = int.Parse(lbl.Tag.ToString());
+            FKqTimKiem form = new FKqTimKiem(index);
+            form.ShowDialog();
+        }
+        private void Pic_Click(object sender, EventArgs e)
+        {
+            // Xử lý sự kiện click tại đây
+            PictureBox pic = sender as PictureBox;
+            index = int.Parse(pic.Tag.ToString());
             FKqTimKiem form = new FKqTimKiem(index);
             form.ShowDialog();
         }
