@@ -141,6 +141,7 @@ RETURN
     WHERE [ID_DangNhap] = @ID_DangNhap
 );
 go
+
 create FUNCTION func_Laydanhsachnguoidungchuathich
 (
     @IdNguoiDung INT
@@ -149,7 +150,7 @@ RETURNS TABLE
 AS
 RETURN
 (
-   SELECT *
+   SELECT ID_NguoiDung,Hoten,AnhDaiDien,MoTaCaNhan
 
 FROM V_NguoiDung
 
@@ -169,6 +170,5 @@ and  ID_NguoiDung not in
 and ID_NguoiDung <> @IdNguoiDung
 );
 GO
-
 
 
