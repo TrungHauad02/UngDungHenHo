@@ -1,4 +1,4 @@
-use NHANTINHENHO
+﻿use NHANTINHENHO
 GO
 
 CREATE PROCEDURE dbo.SignIn
@@ -38,10 +38,20 @@ CREATE PROCEDURE dbo.TrySignIn
     @ID_DangNhap INT OUTPUT
 AS
 BEGIN
+    DECLARE @AccountID INT;
+
+    -- Thêm tài khoản
     EXEC dbo.AddAccount @TaiKhoan, @MatKhau, @PhanQuyen;
 
-    SET @ID_DangNhap = SCOPE_IDENTITY();
+    -- Lấy ID_DangNhap từ bảng Account với TaiKhoan = @TaiKhoan
+    SELECT @AccountID = ID_DangNhap
+    FROM dbo.Account
+    WHERE TaiKhoan = @TaiKhoan;
 
+    -- Gán giá trị cho biến OUTPUT
+    SET @ID_DangNhap = @AccountID;
+
+    -- Thực hiện đăng nhập
     EXEC dbo.SignIn @HoTen, @GioiTinh, @NgaySinh, @SDT, @Email, @ID_DangNhap;
 END;
 GO

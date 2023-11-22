@@ -59,7 +59,7 @@ namespace UngDungHenHo.UserControls
                 }
                 else
                 {
-                    // Xử lý khi không có hình ảnh
+                    pbAnhDaiDien.Image = UngDungHenHo.Properties.Resources.anhnguoidungkhongco;
                 }
             }
             else

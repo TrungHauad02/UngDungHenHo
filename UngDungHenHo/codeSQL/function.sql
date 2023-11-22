@@ -141,6 +141,7 @@ RETURN
     WHERE [ID_DangNhap] = @ID_DangNhap
 );
 go
+
 create FUNCTION func_Laydanhsachnguoidungchuathich
 (
     @IdNguoiDung INT
@@ -149,7 +150,7 @@ RETURNS TABLE
 AS
 RETURN
 (
-   SELECT *
+   SELECT ID_NguoiDung,Hoten,AnhDaiDien,MoTaCaNhan
 
 FROM V_NguoiDung
 
@@ -169,8 +170,6 @@ and  ID_NguoiDung not in
 and ID_NguoiDung <> @IdNguoiDung
 );
 GO
-
-
 
 create function [dbo].[DSTaiKhoanBiChan]()
 returns table
@@ -197,3 +196,15 @@ begin
     RETURN @ReportCount;
 END;
 go
+
+CREATE FUNCTION [dbo].[GetRoleByIDDangNhap](@ID_DangNhap INT)
+RETURNS VARCHAR(10)
+AS
+BEGIN
+    declare @Role VARCHAR(10);
+    SELECT @Role = PhanQuyen
+    FROM dbo.THONGTINDANGNHAP
+    WHERE ID_DangNhap = @ID_DangNhap;
+    RETURN @Role;
+END;
+GO
