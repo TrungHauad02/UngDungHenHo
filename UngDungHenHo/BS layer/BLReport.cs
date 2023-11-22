@@ -54,7 +54,7 @@ namespace UngDungHenHo.BS_layer
 
         public bool LayTrangThaiND(int id_nguoiDung)
         {
-            string query = $"Select dbo.NGUOIDUNG where ID_NguoiDung = {id_nguoiDung}";
+            string query = $"Select TrangThai from dbo.NGUOIDUNG where ID_NguoiDung = {id_nguoiDung}";
             string error = String.Empty;
             DataTable dt = dbMain.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
             return dt.Rows[0]["TrangThai"].ToString() == "1";
