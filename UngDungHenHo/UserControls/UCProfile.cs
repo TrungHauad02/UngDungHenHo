@@ -131,6 +131,8 @@ namespace UngDungHenHo.UserControls
 
                     buttons[i].Text = hoTen;
                     buttons[i].Visible = true;
+                    buttons[i].Tag = dt.Rows[i]["ID_NguoiDung2"].ToString();
+                    buttons[i].Click += new EventHandler(btnGhepDoi_Click);
                 }
 
                 // Ẩn các button không có thông tin
@@ -147,6 +149,12 @@ namespace UngDungHenHo.UserControls
                     button.Visible = false;
                 }
             }
+        }
+
+        private void  btnGhepDoi_Click(object sender, EventArgs e)
+        {
+            FKqTimKiem fKqTimKiem = new FKqTimKiem(Int32.Parse((sender as Button).Tag.ToString()));
+            fKqTimKiem.ShowDialog();
         }
 
         private void UCProfile_Load(object sender, EventArgs e)
