@@ -48,11 +48,12 @@ namespace UngDungHenHo.Forms
             nguoiDung.Username = this.txtUsername.Text;
             nguoiDung.Password = this.txtPassword.Text;
             nguoiDung.Role = "user";
-            TaiKhoan tk = signIn.TrySignIn(nguoiDung);
+            string error = String.Empty;
+            TaiKhoan tk = signIn.TrySignIn(nguoiDung, ref error);           
             if (tk == null)
             {
-                System.Windows.MessageBox.Show("Username is already exists", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.lblErrorUsername.Text = "Username is already exists";
+                System.Windows.MessageBox.Show(error, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.lblErrorUsername.Text = "";
             }
             else
             {

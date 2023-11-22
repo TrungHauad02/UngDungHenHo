@@ -24,9 +24,15 @@ namespace UngDungHenHo
             InitializeComponent();
             FormLogin formLogin = new FormLogin();
             this.Visible = false;
-            while(FormMain.account == null || FormMain.account.Id == -1)
-                formLogin.ShowDialog();
+            formLogin.ShowDialog();
             this.Visible = true;
+            if(account.Role == "admin")
+            {
+                FormReport report = new FormReport();
+                this.Visible = false;
+                report.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
