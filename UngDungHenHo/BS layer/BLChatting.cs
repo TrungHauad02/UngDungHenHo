@@ -22,9 +22,9 @@ namespace UngDungHenHo.BS_layer
             string error = String.Empty;
             return db.ExecuteQueryDataSet(query,CommandType.Text, ref error).Tables[0];
         }
-        public DataTable LoadNguoiDung()
+        public DataTable LoadNguoiDung(int machat)
         {
-            string query = "select * from NGUOIDUNG";
+            string query = $"exec layThongTinNguoiChat {machat}";
             string error = String.Empty;
             return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
         }

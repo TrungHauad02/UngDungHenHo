@@ -139,6 +139,7 @@
             this.pbAnhNguoiChat.Location = new System.Drawing.Point(20, 5);
             this.pbAnhNguoiChat.Name = "pbAnhNguoiChat";
             this.pbAnhNguoiChat.Size = new System.Drawing.Size(58, 50);
+            this.pbAnhNguoiChat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAnhNguoiChat.TabIndex = 0;
             this.pbAnhNguoiChat.TabStop = false;
             // 
