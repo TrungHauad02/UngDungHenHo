@@ -81,15 +81,13 @@
             this.grBaiViet.Size = new System.Drawing.Size(507, 306);
             this.grBaiViet.TabIndex = 22;
             this.grBaiViet.TabStop = false;
-            this.grBaiViet.Text = "groupBox1";
             // 
             // lbStatus
             // 
             this.lbStatus.Location = new System.Drawing.Point(6, 34);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(593, 28);
+            this.lbStatus.Size = new System.Drawing.Size(495, 28);
             this.lbStatus.TabIndex = 0;
-            this.lbStatus.Text = "label5";
             // 
             // lbSoThich
             // 

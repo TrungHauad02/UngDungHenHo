@@ -47,6 +47,7 @@
             // 
             // pnlSearch
             // 
+            this.pnlSearch.AutoScroll = true;
             this.pnlSearch.Location = new System.Drawing.Point(286, 191);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(378, 468);
