@@ -8,7 +8,7 @@ from BAOCAO
 
 go
 
-CREATE VIEW V_SOTHICH AS
+CREATE VIEW V_SOTHICH_SEARCH AS
 SELECT
 	SOTHICH.ID_SoThich,
 	SOTHICH.TenSoThich,
@@ -31,8 +31,3 @@ as
 select * 
 from SOTHICH
 GO
-
-create view [dbo].[v_SoThich]
-as 
-select * 
-from SOTHICH

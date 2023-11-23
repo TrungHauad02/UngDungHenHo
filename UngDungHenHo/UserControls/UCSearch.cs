@@ -95,7 +95,7 @@ namespace UngDungHenHo.UserControls
         public void LoadTimKiem()
         {
             this.pnlSearch.Controls.Clear();
-            if (txtTimKiem.Text != string.Empty || cboSoThich.Text != string.Empty) 
+            if (txtTimKiem.Text == string.Empty || cboSoThich.Text != string.Empty) 
             {
                 try
                 {
@@ -172,6 +172,7 @@ namespace UngDungHenHo.UserControls
         }
         static void RemoveDuplicateRows(DataTable dataTable, string columnName)
         {
+            if(dataTable == null) { return; }
             var uniqueRows = dataTable.AsEnumerable()
                 .GroupBy(row => row.Field<int>(columnName))
                 .Select(group => group.First())

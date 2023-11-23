@@ -37,13 +37,9 @@
             // 
             // pnlSearch
             // 
-<<<<<<< HEAD
             this.pnlSearch.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pnlSearch.Location = new System.Drawing.Point(261, 106);
-=======
-            this.pnlSearch.Location = new System.Drawing.Point(204, 106);
             this.pnlSearch.AutoScroll = true;
->>>>>>> 97b786d659308e9a3c267be7ed2107af86ada392
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(453, 675);
             this.pnlSearch.TabIndex = 4;
