@@ -274,6 +274,8 @@
     <Content Include="codeSQL\procedure.sql" />
     <Content Include="codeSQL\trigger.sql" />
     <Content Include="codeSQL\view.sql" />
+    <None Include="Resources\Thiết kế chưa có tên.png" />
+    <None Include="Resources\background.jpg" />
     <None Include="Picture\anhnguoidungkhongco.png" />
     <None Include="Picture\icon_khongthich.png" />
     <None Include="Resources\Image1.bmp" />

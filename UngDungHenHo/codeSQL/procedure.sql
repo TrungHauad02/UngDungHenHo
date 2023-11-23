@@ -126,6 +126,32 @@ BEGIN
 END;
 go
 
+<<<<<<< HEAD
+CREATE PROCEDURE [dbo].[TimKiemND]
+    @HoTen NVARCHAR(255) = NULL,
+    @TenSoThich NVARCHAR(255) = NULL
+AS
+BEGIN
+    SELECT *
+    FROM V_SOTHICH
+    WHERE 
+        (HoTen IS NULL OR HoTen LIKE '%' + @HoTen + '%')
+        AND (@TenSoThich IS NULL OR TenSoThich LIKE '%' + @TenSoThich + '%')
+END
+GO
+CREATE PROCEDURE [dbo].[TimKiemND]
+    @HoTen NVARCHAR(255) = NULL,
+    @TenSoThich NVARCHAR(255) = NULL
+AS
+BEGIN
+    SELECT *
+    FROM V_SOTHICH
+    WHERE 
+        (HoTen IS NULL OR HoTen LIKE '%' + @HoTen + '%')
+        AND (@TenSoThich IS NULL OR TenSoThich LIKE '%' + @TenSoThich + '%')
+END
+GO
+=======
 CREATE FUNCTION dbo.GetRelatedIDs (@id_select INT)
 RETURNS TABLE
 AS
@@ -148,6 +174,7 @@ RETURN
 
 go
 
+>>>>>>> 97b786d659308e9a3c267be7ed2107af86ada392
 
 CREATE PROC layThongTinNguoiChat @MaND INT
 as
