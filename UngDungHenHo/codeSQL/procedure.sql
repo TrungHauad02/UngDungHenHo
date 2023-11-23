@@ -116,6 +116,29 @@ BEGIN
 END;
 go
 
-
+CREATE PROCEDURE [dbo].[TimKiemND]
+    @HoTen NVARCHAR(255) = NULL,
+    @TenSoThich NVARCHAR(255) = NULL
+AS
+BEGIN
+    SELECT *
+    FROM V_SOTHICH
+    WHERE 
+        (HoTen IS NULL OR HoTen LIKE '%' + @HoTen + '%')
+        AND (@TenSoThich IS NULL OR TenSoThich LIKE '%' + @TenSoThich + '%')
+END
+GO
+CREATE PROCEDURE [dbo].[TimKiemND]
+    @HoTen NVARCHAR(255) = NULL,
+    @TenSoThich NVARCHAR(255) = NULL
+AS
+BEGIN
+    SELECT *
+    FROM V_SOTHICH
+    WHERE 
+        (HoTen IS NULL OR HoTen LIKE '%' + @HoTen + '%')
+        AND (@TenSoThich IS NULL OR TenSoThich LIKE '%' + @TenSoThich + '%')
+END
+GO
 
 
