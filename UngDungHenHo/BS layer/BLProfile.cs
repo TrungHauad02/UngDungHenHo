@@ -67,5 +67,41 @@ namespace UngDungHenHo.BS_layer
                 // Handle the exception or log the error
             }
         }
+        public void AddSoThichForNguoiDung(int nguoiDungID, int idSoThich)
+        {
+            db = new DBMain();
+            SqlCommand cmd = new SqlCommand("dbo.AddSoThichForNguoiDung", db.OpenConnect());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ID_NguoiDung", nguoiDungID);
+            cmd.Parameters.AddWithValue("@ID_SoThich", idSoThich);
+            cmd.ExecuteNonQuery();
+
+        }
+        public void RemoveSoThichForNguoiDung(int nguoiDungID, int idSoThich)
+        {
+            db = new DBMain();
+            SqlCommand cmd = new SqlCommand("dbo.DeleteSoThichForNguoiDung", db.OpenConnect());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ID_NguoiDung", nguoiDungID);
+            cmd.Parameters.AddWithValue("@ID_SoThich", idSoThich);
+            cmd.ExecuteNonQuery();
+        }
+        public DataTable GetAllSoThich()
+        {
+            db = new DBMain();
+            string query = "SELECT * FROM [NHANTINHENHO].[dbo].[SOTHICH]";
+            string error = String.Empty;
+
+            return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
+        }
+        public DataTable GetNguoiDungSoThichTable(int nguoiDungId)
+        {
+            string query = $"SELECT [ID_SoThich] FROM [NHANTINHENHO].[dbo].[SOTHICH_NGUOIDUNG] WHERE [ID_NguoiDung] = {nguoiDungId}";
+            string error = String.Empty;
+
+            return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
+        }
     }
 }
