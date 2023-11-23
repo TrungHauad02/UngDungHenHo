@@ -95,8 +95,7 @@ namespace UngDungHenHo.UserControls
         public void LoadTimKiem()
         {
             this.pnlSearch.Controls.Clear();
-            if (txtTimKiem.Text == string.Empty || cboSoThich.Text != string.Empty) 
-            {
+            
                 try
                 {
                     // Tìm
@@ -137,10 +136,7 @@ namespace UngDungHenHo.UserControls
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }else
-            {
-                MessageBox.Show("Bạn hãy nhập thông tin để tìm kiếm!");
-            }
+            
             /*
             this.txtTimKiem.Clear();
             this.txtTimKiem.Text= null;
