@@ -5,6 +5,7 @@ create view [dbo].[v_BaoCao]
 as 
 select * 
 from BAOCAO
+
 go
 
 CREATE VIEW V_SOTHICH AS
@@ -25,3 +26,13 @@ FROM
 	JOIN NGUOIDUNG ON NGUOIDUNG.ID_NguoiDung = SOTHICH_NGUOIDUNG.ID_NguoiDung
 GO
 
+create view [dbo].[v_SoThich]
+as 
+select * 
+from SOTHICH
+GO
+
+create view [dbo].[v_SoThich]
+as 
+select * 
+from SOTHICH
