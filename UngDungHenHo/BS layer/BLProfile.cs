@@ -103,5 +103,33 @@ namespace UngDungHenHo.BS_layer
 
             return db.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
         }
+        public void InsertBaViet(string noiDung, byte[] hinhAnh, DateTime thoiGianDang, int idNguoiDung)
+        {
+            db = null;
+            db = new DBMain();
+            string procName = "InsertBaVietProcedure";
+            SqlConnection conn = db.OpenConnect();
+            db.Comm = new SqlCommand(procName, conn);
+            db.Comm.CommandType = CommandType.StoredProcedure;
+
+            db.Comm.Parameters.AddWithValue("@NoiDung", noiDung);
+            db.Comm.Parameters.AddWithValue("@HinhAnh", hinhAnh);
+            db.Comm.Parameters.AddWithValue("@ThoiGianDang", thoiGianDang);
+            db.Comm.Parameters.AddWithValue("@ID_NguoiDung", idNguoiDung);
+            string error = string.Empty;
+            try
+            {
+                db.Comm.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            if (error != "")
+            {
+
+            }
+
+        }
     }
 }

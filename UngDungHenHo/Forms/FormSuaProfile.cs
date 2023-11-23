@@ -29,7 +29,7 @@ namespace UngDungHenHo.Forms
             InitializeComponent();
             this.idDangNhap = iddangnhap;
             LoadProfile(idDangNhap);
-
+            LoadHobbiesCheckBoxes(idDangNhap);
         }
 
         private void btnChonHinh_Click(object sender, EventArgs e)

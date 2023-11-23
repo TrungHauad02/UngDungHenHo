@@ -208,3 +208,15 @@ BEGIN
         ID_SoThich = @ID_SoThich;
 END;
 go
+
+CREATE PROCEDURE InsertBaVietProcedure
+    @NoiDung NVARCHAR(MAX),
+    @HinhAnh VARBINARY(MAX),
+    @ThoiGianDang DATETIME,
+    @ID_NguoiDung INT
+AS
+BEGIN
+    INSERT INTO [NHANTINHENHO].[dbo].[BAIVIET] ([NoiDung], [HinhAnh], [ThoiGianDang], [ID_NguoiDung])
+    VALUES (@NoiDung, @HinhAnh, @ThoiGianDang, @ID_NguoiDung);
+END;
+GO
