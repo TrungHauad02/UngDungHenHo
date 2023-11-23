@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using UngDungHenHo.BS_layer;
 using UngDungHenHo.Forms;
@@ -23,10 +24,21 @@ namespace UngDungHenHo
         {
             InitializeComponent();
             FormLogin formLogin = new FormLogin();
+            FormReport report = new FormReport();
             this.Visible = false;
-            while(FormMain.account == null || FormMain.account.Id == -1)
-                formLogin.ShowDialog();
-            this.Visible = true;
+            formLogin.ShowDialog();
+            while (!formLogin.IsDisposed && !report.IsDisposed)
+            {
+                if (account != null && account.Role != "admin")
+                    break;
+                this.Visible = false;
+                report.ShowDialog();
+                if(!report.IsDisposed)
+                     formLogin.ShowDialog();
+                else
+                     Application.Exit();
+                
+            }
         }
 
         private void pnlHeader_Paint(object sender, PaintEventArgs e)
@@ -74,11 +86,20 @@ namespace UngDungHenHo
             {
                 SetSelected(sender);
                 this.pnlBody.Controls.Clear();
-                this.Visible = false;
                 FormLogin formLogin = new FormLogin();
-                if (FormMain.account == null || FormMain.account.Id == -1)
-                    formLogin.ShowDialog();
-                this.Visible = true;
+                this.Visible = false;
+                formLogin.ShowDialog();
+                if (!formLogin.IsDisposed)
+                {
+                    this.Visible = true;
+                    if (account.Role == "admin")
+                    {
+                        FormReport report = new FormReport();
+                        this.Visible = false;
+                        report.ShowDialog();
+                        this.Close();
+                    }
+                }
             }
         }
 

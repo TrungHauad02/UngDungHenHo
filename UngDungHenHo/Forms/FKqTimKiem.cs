@@ -15,6 +15,7 @@ namespace UngDungHenHo.Forms
     public partial class FKqTimKiem : Form
     {
         BLSearch BLSearch = new BLSearch();
+
         public FKqTimKiem(int nguoiDungId)
         {
             InitializeComponent();
@@ -26,6 +27,14 @@ namespace UngDungHenHo.Forms
         BLProfile blProfile = new BLProfile();
         private Button[] buttons = new Button[4]; // Mảng các button
         private int currentButtonIndex = 0; // Chỉ số hiện tại của button được xử lý
+
+        public void AddScrollBar(Panel panel)
+        {
+            VScrollBar vsb = new VScrollBar();
+            vsb.Dock = DockStyle.Right;
+            vsb.Visible = false;
+            panel.Controls.Add(vsb);
+        }
 
         public void LoadNguoiDung(int nguoiDungId)
         {
@@ -70,44 +79,75 @@ namespace UngDungHenHo.Forms
                                             .Select(row => row.Field<string>("TenSoThich")));
                 lbSoThich.Text = soThichText;
             }
-            DataTable baiVietTable = blProfile.GetBaiVietByNguoiDungId(nguoiDungId);
+            listbaiviet(nguoiDungId);
 
-            if (baiVietTable.Rows.Count > 0)
+        }
+        private void listbaiviet(int nguoiDungId)
+        {
+            DataTable dtBaiVietNguoiDung = blProfile.GetBaiVietByNguoiDungId(nguoiDungId);
+            int tongbaiviet = dtBaiVietNguoiDung.Rows.Count;
+            PictureBox[] hinhanhbaiviet = new PictureBox[tongbaiviet];
+            Label[] lbNoiDung = new Label[tongbaiviet];
+            Label[] thoigiandang = new Label[tongbaiviet];
+            Panel baiviet = new Panel();
+            baiviet.Location = new Point(181, 382);
+
+            baiviet.Size = new Size(380, 249);
+
+            for (int i = 0; i < tongbaiviet; i++)
             {
-                DataRow baiVietRow = baiVietTable.Rows[0];
 
-                // Kiểm tra và hiển thị nội dung bài viết
-                if (baiVietRow["NoiDung"] != DBNull.Value)
+                hinhanhbaiviet[i] = new PictureBox();
+                thoigiandang[i] = new Label();
+                lbNoiDung[i] = new Label();
+
+                if (i == 0)
                 {
-                    lbStatus.Text = baiVietRow["NoiDung"].ToString();
+                    thoigiandang[i].Location = new Point(0, 0);
+                    lbNoiDung[i].Location = new Point(4, 28);
+                    hinhanhbaiviet[i].Location = new Point(28, 61);
                 }
                 else
                 {
-                    // Xử lý khi không có nội dung bài viết
+                    thoigiandang[i].Location = new Point(hinhanhbaiviet[i - 1].Left, hinhanhbaiviet[i - 1].Bottom + 10);
+                    lbNoiDung[i].Location = new Point(thoigiandang[i].Left, thoigiandang[i].Bottom + 10);
+                    hinhanhbaiviet[i].Location = new Point(thoigiandang[i].Left, lbNoiDung[i].Bottom + 10);
+
                 }
+                hinhanhbaiviet[i].Size = new Size(334, 171);
+                thoigiandang[i].AutoSize = true;
+                lbNoiDung[i].AutoSize = true;
 
-                DateTime thoiGianDang = Convert.ToDateTime(baiVietRow["ThoiGianDang"]);
-                grBaiViet.Text = $"Bài viết (Đăng vào {thoiGianDang.ToString("dd/MM/yyyy HH:mm:ss")})";
 
-                // Kiểm tra và hiển thị hình ảnh trong bài viết
-                if (baiVietRow["HinhAnh"] != DBNull.Value)
+
+                object rawValue = dtBaiVietNguoiDung.Rows[i][1];
+                if (rawValue != DBNull.Value)
                 {
-                    byte[] imageData = (byte[])baiVietRow["HinhAnh"];
-                    using (MemoryStream ms = new MemoryStream(imageData))
+                    byte[] HinhAnh = (byte[])rawValue;
+                    using (MemoryStream ms = new MemoryStream(HinhAnh))
                     {
-                        Image image = Image.FromStream(ms);
-                        pictureBox2.Image = image;
+                        Image hinhAnh = Image.FromStream(ms);
+                        hinhanhbaiviet[i].Image = hinhAnh;
                     }
+
                 }
                 else
                 {
-                    // Xử lý khi không có hình ảnh trong bài viết
+                    hinhanhbaiviet[i].Image = UngDungHenHo.Properties.Resources.anhnguoidungkhongco;
+
+
                 }
+                hinhanhbaiviet[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                lbNoiDung[i].Text = "Nội dung: " + dtBaiVietNguoiDung.Rows[i][0].ToString();
+                thoigiandang[i].Text = Convert.ToDateTime(dtBaiVietNguoiDung.Rows[i][2]).ToString();
+                baiviet.Controls.Add(hinhanhbaiviet[i]);
+                baiviet.Controls.Add(lbNoiDung[i]);
+                baiviet.Controls.Add(thoigiandang[i]);
             }
-            else
-            {
-                // Xử lý khi không có thông tin bài viết
-            }
+            baiviet.AutoScroll = true;
+            AddScrollBar(baiviet);
+            baiviet.BorderStyle = BorderStyle.FixedSingle;
+            this.Controls.Add(baiviet);
 
         }
 
@@ -126,6 +166,8 @@ namespace UngDungHenHo.Forms
 
                     buttons[i].Text = hoTen;
                     buttons[i].Visible = true;
+                    buttons[i].Tag = dt.Rows[i]["ID_NguoiDung2"].ToString();
+                    buttons[i].Click += new EventHandler(btnGhepDoi_Click);
                 }
 
                 // Ẩn các button không có thông tin
@@ -142,6 +184,12 @@ namespace UngDungHenHo.Forms
                     button.Visible = false;
                 }
             }
+        }
+
+        private void btnGhepDoi_Click(object sender, EventArgs e)
+        {
+            FKqTimKiem fKqTimKiem = new FKqTimKiem(Int32.Parse((sender as Button).Tag.ToString()));
+            fKqTimKiem.ShowDialog();
         }
     }
 }
