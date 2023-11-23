@@ -47,6 +47,7 @@ namespace UngDungHenHo.Forms
                 if(!bLReport.LayTrangThaiND(FormMain.account.Id))
                 {
                     MessageBox.Show("You are banned" + " because " + bLReport.NDBaoCao(FormMain.account.Id), "Login fail");
+                    return;
                 }
                 MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
                 this.Close();
