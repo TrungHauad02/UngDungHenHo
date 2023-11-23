@@ -43,6 +43,7 @@
             this.txtIDBaoCao = new System.Windows.Forms.TextBox();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.btnSoThich = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,11 +202,23 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // btnSoThich
+            // 
+            this.btnSoThich.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSoThich.Location = new System.Drawing.Point(467, 394);
+            this.btnSoThich.Name = "btnSoThich";
+            this.btnSoThich.Size = new System.Drawing.Size(87, 39);
+            this.btnSoThich.TabIndex = 15;
+            this.btnSoThich.Text = "Sở thích";
+            this.btnSoThich.UseVisualStyleBackColor = true;
+            this.btnSoThich.Click += new System.EventHandler(this.btnSoThich_Click);
+            // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 462);
+            this.Controls.Add(this.btnSoThich);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.txtIDBaoCao);
@@ -246,5 +259,6 @@
         private System.Windows.Forms.TextBox txtIDBaoCao;
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnSoThich;
     }
 }

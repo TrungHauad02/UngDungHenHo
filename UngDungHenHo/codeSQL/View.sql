@@ -13,3 +13,7 @@ select *
 from SOTHICH
 GO
 
+create view [dbo].[v_SoThich]
+as 
+select * 
+from SOTHICH
