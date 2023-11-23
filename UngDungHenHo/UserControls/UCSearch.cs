@@ -38,7 +38,7 @@ namespace UngDungHenHo.UserControls
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Width = 413;
             panel.Height = 76;
-            panel.Location = new Point(6, vitri * 100 - 90);
+            panel.Location = new Point(6, vitri * 100 - 90);//
             // Tạo PictureBox
             PictureBox pictureBox = new PictureBox();
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
