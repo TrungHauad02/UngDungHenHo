@@ -48,8 +48,8 @@ namespace UngDungHenHo.Forms
                 {
                     MessageBox.Show("You are banned" + " because " + bLReport.NDBaoCao(FormMain.account.Id), "Login fail");
                 }
-                //MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
-                //this.Close();
+                MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
+                this.Close();
             }
             else
             {
