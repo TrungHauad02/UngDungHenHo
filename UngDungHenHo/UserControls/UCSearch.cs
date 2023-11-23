@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Windows.Media;
@@ -24,15 +25,19 @@ namespace UngDungHenHo.UserControls
         public UCSearch()
         {
             InitializeComponent();
+            AddScrollBar(this.pnlSearch);
+            LoadSoThich();
         }
         private DataTable dtTimKiem;
+        private DataView dvTimKiem;
         public int index;
+        BLSearch blsearch = new BLSearch();
         public Panel TaoKetQuaTimKiem(NguoiDung a, byte[] image, int vitri)
         {
             Panel panel = new Panel();
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Width = 355;
-            panel.Height = 72;
+            panel.Width = 413;
+            panel.Height = 76;
             panel.Location = new Point(16, vitri * 100);
             // Tạo PictureBox
             PictureBox pictureBox = new PictureBox();
@@ -90,51 +95,91 @@ namespace UngDungHenHo.UserControls
         public void LoadTimKiem()
         {
             this.pnlSearch.Controls.Clear();
-            try
+            if (txtTimKiem.Text != string.Empty || cboSoThich.Text != string.Empty) 
             {
-                // Tìm
-                BLSearch blsearch = new BLSearch();
-                string error = string.Empty;
-                dtTimKiem = blsearch.TimKiemND(txtTimKiem.Text, ref error);
-                // Kiểm tra 
-                if (dtTimKiem.Rows.Count == 0)
+                try
                 {
-                    MessageBox.Show("Người dùng không tồn tại. Vui lòng nhập lại!");
-                    txtTimKiem.Focus();
-                    return;
-                }
+                    // Tìm
+                    string error = string.Empty;
+                    dtTimKiem = blsearch.TimKiemND(txtTimKiem.Text, cboSoThich.Text);
+                    RemoveDuplicateRows(dtTimKiem, "ID_NguoiDung");
+                    // Kiểm tra 
+                    if (dtTimKiem.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Người dùng không tồn tại. Vui lòng nhập lại!");
+                        txtTimKiem.Focus();
+                        return;
+                    }
 
-                int vitri = 1;
-                foreach (DataRow r in dtTimKiem.Rows)
+                    int vitri = 1;
+                    foreach (DataRow r in dtTimKiem.Rows)
+                    {
+                        NguoiDung temp = new NguoiDung(int.Parse(r["ID_NguoiDung"].ToString()), r["HoTen"].ToString());
+                        byte[] imageData;
+                        if (r["AnhDaiDien"] == DBNull.Value)
+                        {
+                            imageData = BLSearch.BitmapToByteArray(Properties.Resources.anhnguoidungkhongco);
+                            Panel Nguoidung = TaoKetQuaTimKiem(temp, imageData, vitri);
+                            this.pnlSearch.Controls.Add(Nguoidung);
+                        }
+                        else
+                        {
+                            // Xử lý khi không có hình ảnh
+                            imageData = (byte[])r["AnhDaiDien"];
+                            Panel Nguoidung = TaoKetQuaTimKiem(temp, imageData, vitri);
+                            this.pnlSearch.Controls.Add(Nguoidung);
+                        }
+                        vitri++;
+                    }
+
+                }
+                catch (SqlException ex)
                 {
-                    NguoiDung temp = new NguoiDung(int.Parse(r["ID_DangNhap"].ToString()), r["HoTen"].ToString());
-                    byte[] imageData;
-                    if (r["AnhDaiDien"] == DBNull.Value)
-                    {
-                        imageData = BLSearch.BitmapToByteArray(Properties.Resources.anhnguoidungkhongco);
-                        Panel Nguoidung = TaoKetQuaTimKiem(temp, imageData, vitri);
-                        this.pnlSearch.Controls.Add(Nguoidung);
-                    }
-                    else
-                    {
-                        // Xử lý khi không có hình ảnh
-                        imageData = (byte[])r["AnhDaiDien"];
-                        Panel Nguoidung = TaoKetQuaTimKiem(temp, imageData, vitri);
-                        this.pnlSearch.Controls.Add(Nguoidung);
-                    }
-                    vitri++;
+                    MessageBox.Show(ex.Message);
                 }
-
-            }
-            catch (SqlException ex)
+            }else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Bạn hãy nhập thông tin để tìm kiếm!");
             }
+            /*
+            this.txtTimKiem.Clear();
+            this.txtTimKiem.Text= null;
+            */
+            this.txtTimKiem.Focus();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LoadTimKiem();
+            txtTimKiem.PerformLayout();
         }
+        public void AddScrollBar(Panel pnl)
+        {
+            VScrollBar vsb = new VScrollBar();
+            vsb.Dock = DockStyle.Right;
+            vsb.Visible = false;
+            pnl.Controls.Add(vsb);
+
+        }
+
+        public void LoadSoThich()
+        {
+            DataTable dtSothich = blsearch.TimKiemSoThich();
+            foreach( DataRow dr in dtSothich.Rows) 
+            {
+                cboSoThich.Items.Add(dr["TenSoThich"].ToString());
+            }
+        }
+        static void RemoveDuplicateRows(DataTable dataTable, string columnName)
+        {
+            var uniqueRows = dataTable.AsEnumerable()
+                .GroupBy(row => row.Field<int>(columnName))
+                .Select(group => group.First())
+                .CopyToDataTable();
+
+            dataTable.Clear();
+            dataTable.Merge(uniqueRows);
+        }
+
     }
 }
