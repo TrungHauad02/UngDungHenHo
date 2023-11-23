@@ -41,6 +41,8 @@
             this.datePhanHoi = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIDBaoCao = new System.Windows.Forms.TextBox();
+            this.btnDangXuat = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,11 +179,35 @@
             this.txtIDBaoCao.Size = new System.Drawing.Size(100, 29);
             this.txtIDBaoCao.TabIndex = 12;
             // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Location = new System.Drawing.Point(868, 394);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(118, 39);
+            this.btnDangXuat.TabIndex = 13;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.Location = new System.Drawing.Point(1066, 394);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(118, 39);
+            this.btnThoat.TabIndex = 14;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 462);
+            this.Controls.Add(this.btnThoat);
+            this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.txtIDBaoCao);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNoiDung);
@@ -218,5 +244,7 @@
         private System.Windows.Forms.DateTimePicker datePhanHoi;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIDBaoCao;
+        private System.Windows.Forms.Button btnDangXuat;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

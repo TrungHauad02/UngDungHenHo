@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using UngDungHenHo.BS_layer;
 using UngDungHenHo.Forms;
@@ -23,18 +24,20 @@ namespace UngDungHenHo
         {
             InitializeComponent();
             FormLogin formLogin = new FormLogin();
+            FormReport report = new FormReport();
             this.Visible = false;
             formLogin.ShowDialog();
-            if (!formLogin.IsDisposed)
+            while (!formLogin.IsDisposed && !report.IsDisposed)
             {
-                this.Visible = true;
-                if (account.Role == "admin")
-                {
-                    FormReport report = new FormReport();
-                    this.Visible = false;
-                    report.ShowDialog();
-                    this.Visible = true;
-                }
+                if (account != null && account.Role != "admin")
+                    break;
+                this.Visible = false;
+                report.ShowDialog();
+                if(!report.IsDisposed)
+                     formLogin.ShowDialog();
+                else
+                     Application.Exit();
+                
             }
         }
 
@@ -94,7 +97,7 @@ namespace UngDungHenHo
                         FormReport report = new FormReport();
                         this.Visible = false;
                         report.ShowDialog();
-                        this.Visible = true;
+                        this.Close();
                     }
                 }
             }
