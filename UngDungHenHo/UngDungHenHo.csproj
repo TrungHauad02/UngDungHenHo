@@ -116,6 +116,12 @@
     <Compile Include="Forms\FormBlock.Designer.cs">
       <DependentUpon>FormBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormDangBaiViet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDangBaiViet.Designer.cs">
+      <DependentUpon>FormDangBaiViet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormForgetpassword.cs">
       <SubType>Form</SubType>
     </Compile>

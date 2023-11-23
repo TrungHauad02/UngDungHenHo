@@ -95,9 +95,9 @@ namespace UngDungHenHo.UserControls
             Label[] lbNoiDung = new Label[tongbaiviet];
             Label[] thoigiandang = new Label[tongbaiviet];
             Panel baiviet = new Panel();
-            baiviet.Location = new Point(181, 382);
+            baiviet.Location = new Point(178, 470);
 
-            baiviet.Size = new Size(380, 249);
+            baiviet.Size = new Size(430, 297);
 
             for (int i = 0; i < tongbaiviet; i++)
             {
@@ -207,6 +207,14 @@ namespace UngDungHenHo.UserControls
             FormSuaProfile formSuaProfile = new FormSuaProfile(idDangNhap);
             formSuaProfile.ShowDialog();
             LoadNguoiDung(idDangNhap);
+        }
+
+        private void btnDangBai_Click(object sender, EventArgs e)
+        {
+            FormDangBaiViet formDangBaiViet = new FormDangBaiViet(idDangNhap);
+            formDangBaiViet.ShowDialog();
+            LoadNguoiDung(idDangNhap);
+            listbaiviet(idDangNhap);
         }
     }
     
