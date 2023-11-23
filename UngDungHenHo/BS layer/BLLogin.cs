@@ -24,6 +24,9 @@ namespace UngDungHenHo.BS_layer
             {
                 tk = new TaiKhoan();
                 tk.Id = Int32.Parse(dt.Rows[0][0].ToString());
+                query = $"SELECT dbo.GetRoleByIDDangNhap({tk.Id})";
+                dt = dbMain.ExecuteQueryDataSet(query, CommandType.Text, ref error).Tables[0];
+                tk.Role = dt.Rows[0][0].ToString();
             }
             return tk;
         }

@@ -50,6 +50,7 @@
             // pnlSearch
             // 
             this.pnlSearch.Location = new System.Drawing.Point(204, 106);
+            this.pnlSearch.AutoScroll = true;
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(453, 657);
             this.pnlSearch.TabIndex = 4;

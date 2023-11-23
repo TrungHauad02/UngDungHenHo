@@ -11,6 +11,7 @@ namespace UngDungHenHo.models
         private string username;
         private string password;
         private int id;
+        private string role;
         public TaiKhoan(string username,string password) 
         {
             this.username = username;
@@ -21,5 +22,6 @@ namespace UngDungHenHo.models
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public int Id { get => id; set => id = value; }
+        public string Role { get => role; set => role = value; }
     }
 }

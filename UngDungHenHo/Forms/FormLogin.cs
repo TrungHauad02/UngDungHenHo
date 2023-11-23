@@ -43,6 +43,12 @@ namespace UngDungHenHo.Forms
             FormMain.account = bLLogin.TryLogin(account);
             if (FormMain.account.Id != -1)
             {
+                BLReport bLReport = new BLReport();
+                if(!bLReport.LayTrangThaiND(FormMain.account.Id))
+                {
+                    MessageBox.Show("You are banned" + " because " + bLReport.NDBaoCao(FormMain.account.Id), "Login fail");
+                    return;
+                }
                 MessageBox.Show($"Welcome {FormMain.account.Id}", "Login succeed");
                 this.Close();
             }
@@ -51,8 +57,6 @@ namespace UngDungHenHo.Forms
                 MessageBox.Show("Wrong username or password", "Error");
                 this.lblUsernameError.Text = "Wrong username or password";
                 this.lblPasswordError.Text = "Wrong username or password";
-                //1
-                //14y461
             }
         }
 

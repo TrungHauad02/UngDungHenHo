@@ -11,8 +11,7 @@ namespace UngDungHenHo.DB_layer
 {
     internal class DBMain
     {
-        string ConnStr = @"Data Source =LAPTOP-96701P24\MSSQLSERVER02;Initial Catalog = NHANTINHENHO; Integrated Security = True";
-        //string ConnStr = "Server=tcp:sqlserver-pht.database.windows.net,1433;Initial Catalog=NHANTINHENHO;Persist Security Info=False;User ID=pht;Password=PhamHuuTuan241103;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string ConnStr = "Server=tcp:sqlserver-pht.database.windows.net,1433;Initial Catalog=NHANTINHENHO;Persist Security Info=False;User ID=pht;Password=PhamHuuTuan241103;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         SqlConnection conn = null;
         SqlCommand comm = null;
         SqlDataAdapter da = null;
