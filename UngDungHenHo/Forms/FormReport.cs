@@ -85,5 +85,11 @@ namespace UngDungHenHo.Forms
         {
             Application.Exit();
         }
+
+        private void btnSoThich_Click(object sender, EventArgs e)
+        {
+            FormQLSoThich formQLSoThich = new FormQLSoThich();
+            formQLSoThich.Show();
+        }
     }
 }

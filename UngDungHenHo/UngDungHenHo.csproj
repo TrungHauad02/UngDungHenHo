@@ -90,6 +90,7 @@
     <Compile Include="BS layer\BLHome.cs" />
     <Compile Include="BS layer\BLLogin.cs" />
     <Compile Include="BS layer\BLProfile.cs" />
+    <Compile Include="BS layer\BLQLSoThich.cs" />
     <Compile Include="BS layer\BLReport.cs" />
     <Compile Include="BS layer\BLSearch.cs" />
     <Compile Include="BS layer\BLSignIn.cs" />
@@ -132,6 +133,12 @@
     </Compile>
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormQLSoThich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQLSoThich.Designer.cs">
+      <DependentUpon>FormQLSoThich.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormReport.cs">
       <SubType>Form</SubType>
@@ -198,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQLSoThich.resx">
+      <DependentUpon>FormQLSoThich.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>

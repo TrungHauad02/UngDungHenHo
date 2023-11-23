@@ -156,3 +156,28 @@ as
 	where rl.RelatedID = ND.ID_NguoiDung
 
 
+CREATE PROC [dbo].[proc_ThemSoThich]
+    @TenSoThich NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO SOTHICH (TenSoThich)
+    VALUES (@TenSoThich);
+
+    SELECT SCOPE_IDENTITY() AS ID_SoThich;
+END;
+GO
+
+CREATE PROC [dbo].[proc_CapNhatSoThich]
+    @ID_SoThich INT,
+    @TenSoThich nvarchar(30)
+AS
+BEGIN
+    UPDATE SOTHICH
+    SET
+        TenSoThich = @TenSoThich
+    WHERE
+        ID_SoThich = @ID_SoThich;
+END;
+go
