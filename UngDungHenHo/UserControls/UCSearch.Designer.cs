@@ -33,13 +33,14 @@
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.cboSoThich = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnTimKiem
             // 
             this.btnTimKiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.BackgroundImage")));
             this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTimKiem.Location = new System.Drawing.Point(627, 22);
+            this.btnTimKiem.Location = new System.Drawing.Point(627, 24);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(30, 30);
             this.btnTimKiem.TabIndex = 5;
@@ -55,28 +56,36 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(204, 22);
+            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(204, 28);
             this.txtTimKiem.Multiline = true;
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(248, 30);
+            this.txtTimKiem.Size = new System.Drawing.Size(248, 24);
             this.txtTimKiem.TabIndex = 3;
-            this.txtTimKiem.Text = "Tìm kiếm người dùng";
-            this.txtTimKiem.Click += new System.EventHandler(this.txtTimKiem_Click);
             // 
             // cboSoThich
             // 
             this.cboSoThich.FormattingEnabled = true;
-            this.cboSoThich.Location = new System.Drawing.Point(467, 26);
+            this.cboSoThich.Location = new System.Drawing.Point(470, 28);
             this.cboSoThich.Name = "cboSoThich";
-            this.cboSoThich.Size = new System.Drawing.Size(135, 24);
+            this.cboSoThich.Size = new System.Drawing.Size(127, 24);
             this.cboSoThich.TabIndex = 6;
-            this.cboSoThich.Text = "Sở thích";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(79, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 27);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Tìm kiếm";
             // 
             // UCSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboSoThich);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.pnlSearch);
@@ -94,5 +103,6 @@
         private System.Windows.Forms.Panel pnlSearch;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.ComboBox cboSoThich;
+        private System.Windows.Forms.Label label1;
     }
 }

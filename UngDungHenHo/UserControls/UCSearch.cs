@@ -36,8 +36,8 @@ namespace UngDungHenHo.UserControls
         {
             Panel panel = new Panel();
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Width = 355;
-            panel.Height = 106;
+            panel.Width = 413;
+            panel.Height = 76;
             panel.Location = new Point(16, vitri * 100);
             // Tạo PictureBox
             PictureBox pictureBox = new PictureBox();
@@ -75,7 +75,7 @@ namespace UngDungHenHo.UserControls
         public void LoadTimKiem()
         {
             this.pnlSearch.Controls.Clear();
-            if (txtTimKiem.Text != null || cboSoThich.Text != null ) 
+            if (txtTimKiem.Text != string.Empty || cboSoThich.Text != string.Empty) 
             {
                 try
                 {
@@ -131,6 +131,7 @@ namespace UngDungHenHo.UserControls
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LoadTimKiem();
+            txtTimKiem.PerformLayout();
         }
         public void AddScrollBar(Panel pnl)
         {
@@ -160,9 +161,5 @@ namespace UngDungHenHo.UserControls
             dataTable.Merge(uniqueRows);
         }
 
-        private void txtTimKiem_Click(object sender, EventArgs e)
-        {
-            txtTimKiem.Text = string.Empty;
-        }
     }
 }
