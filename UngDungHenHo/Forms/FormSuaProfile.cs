@@ -22,6 +22,8 @@ namespace UngDungHenHo.Forms
         public int idDangNhap;
         private bool isChonHinh = false;
         private byte[] imageDataForm;
+
+        DataTable nguoiDungSoThichTable;
         public FormSuaProfile(int iddangnhap)
         {
             InitializeComponent();
@@ -104,6 +106,7 @@ namespace UngDungHenHo.Forms
                 string moTaCaNhan = txtMoTa.Text; // Lấy giá trị từ TextBox moTa
 
                 blProfile.UpdateInfoNguoiDung(nguoiDungID, hoTen, ngaySinh, HinhAnh, moTaCaNhan);
+                UpdateUserHobbies(nguoiDungID);
             }
             catch (Exception ex)
             {
@@ -121,6 +124,76 @@ namespace UngDungHenHo.Forms
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void LoadHobbiesCheckBoxes(int nguoiDungId)
+        {
+            DataTable soThichTable = blProfile.GetAllSoThich();
+
+            foreach (DataRow row in soThichTable.Rows)
+            {
+                int idSoThich = Convert.ToInt32(row["ID_SoThich"]);
+                string tenSoThich = row["TenSoThich"].ToString();
+
+                CheckBox checkBox = new CheckBox();
+                checkBox.Text = tenSoThich;
+                checkBox.Tag = idSoThich;
+
+                // Check the checkbox if the user has this hobby
+                nguoiDungSoThichTable = blProfile.GetNguoiDungSoThichTable(nguoiDungId);
+                DataRow[] matchingRows = nguoiDungSoThichTable.Select($"ID_SoThich = {idSoThich}");
+                checkBox.Checked = matchingRows.Length > 0;
+
+                flowLayoutPanelHobbies.Controls.Add(checkBox);
+            }
+        }
+        private void UpdateUserHobbies(int nguoiDungID)
+        {
+
+
+            int[] sothichsan = new int[nguoiDungSoThichTable.Rows.Count + 1];
+            int[] sothichchinhsua = new int[20];
+
+            int demt = 0;
+            for (int i = 0; i < nguoiDungSoThichTable.Rows.Count; i++)
+            {
+                sothichsan[i] = Convert.ToInt32(nguoiDungSoThichTable.Rows[i][0]);
+            }
+            foreach (Control control in flowLayoutPanelHobbies.Controls)
+            {
+                if (control is CheckBox checkBox)
+                {
+                    int idSoThich = (int)checkBox.Tag;
+
+                    if (checkBox.Checked)
+                    {
+
+                        sothichchinhsua[demt] = idSoThich;
+                        demt++;
+
+                    }
+
+
+
+                }
+
+            }
+            int[] sothichthem = sothichchinhsua.Except(sothichsan).ToArray();
+            int[] sothichxoa = sothichsan.Except(sothichchinhsua).ToArray();
+
+
+            for (int i = 0; i < sothichthem.Length; i++)
+            {
+
+                blProfile.AddSoThichForNguoiDung(nguoiDungID, sothichthem[i]);
+
+            }
+            for (int i = 0; i < sothichxoa.Length; i++)
+            {
+                blProfile.RemoveSoThichForNguoiDung(nguoiDungID, sothichxoa[i]);
+
+            }
+
+
         }
     }
 }
