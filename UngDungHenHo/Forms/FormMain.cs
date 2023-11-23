@@ -83,11 +83,20 @@ namespace UngDungHenHo
             {
                 SetSelected(sender);
                 this.pnlBody.Controls.Clear();
-                this.Visible = false;
                 FormLogin formLogin = new FormLogin();
-                if (FormMain.account == null || FormMain.account.Id == -1)
-                    formLogin.ShowDialog();
-                this.Visible = true;
+                this.Visible = false;
+                formLogin.ShowDialog();
+                if (!formLogin.IsDisposed)
+                {
+                    this.Visible = true;
+                    if (account.Role == "admin")
+                    {
+                        FormReport report = new FormReport();
+                        this.Visible = false;
+                        report.ShowDialog();
+                        this.Visible = true;
+                    }
+                }
             }
         }
 
